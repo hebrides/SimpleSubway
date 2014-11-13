@@ -11,6 +11,7 @@
 #import "SMGViewController.h"
 #import "SMGUtilities.h"
 #import "SMGButton.h"
+// #import "SMGMapAnnotation.h"
 
 #define STATUSBARHEIGHT 20.0f
 
@@ -43,7 +44,7 @@
 @property (nonatomic, strong)          UIButton*           openSubMenuButton;
 @property (nonatomic, strong)          UIButton*           openTabBarButton;
 @property (nonatomic, strong)          UIColor*            menuBGColor;
-@property (nonatomic, readwrite)       CGPathDrawingMode   drawingMode;
+@property (nonatomic)                  CGPathDrawingMode   drawingMode;
 @property (nonatomic)                  BOOL                openSubMenuButtonTouched;
 @property (nonatomic)                  BOOL                iOS7;
 
@@ -69,7 +70,7 @@
     
     //
     // Determine iOS 7
-    // -------------
+    // ---------------
     self.iOS7 = [SMGUtilities iOS7check];
     
     //
@@ -179,6 +180,16 @@
     MKCoordinateSpan startAreaSpan = MKCoordinateSpanMake(0.1, 0.1);
     MKCoordinateRegion startArea= MKCoordinateRegionMake(startLocation, startAreaSpan);
     [self.mapkitMapView setRegion:startArea animated:YES];
+    CLLocationCoordinate2D  ctrpoint;
+    ctrpoint.latitude = 40.752;
+    ctrpoint.longitude =-73.979;
+   
+    // SMGMapAnnotation *fooAnnotation = [[SMGMapAnnotation alloc] initWithCoordinates:ctrpoint placeName:@"Foo" description:@"Bar"];
+    // [self.mapkitMapView addAnnotation:fooAnnotation];
+    
+    // For showing user location (not yet implemented as a button).
+    self.mapkitMapView.delegate =  self;
+    self.mapkitMapView.showsUserLocation = YES;
     
     //
     // App Info Webview
@@ -230,7 +241,9 @@
     
 #pragma mark - SubMenu Opener
     
+    //
     // Create bus submenu opener  ☰ + X
+    // ---------------------------------
     self.openSubMenuButton = [[UIButton alloc] init];
     self.openSubMenuButton.frame = CGRectMake(self.subMenuWidth-self.subMenuOpenerButtonSize,tabBarHeight*4, self.subMenuOpenerButtonSize, self.subMenuOpenerButtonSize);
     self.openSubMenuButton.titleLabel.font = [UIFont fontWithName:@"Verdana" size:16.0];
@@ -302,7 +315,7 @@
     [self.appInfoVC.view addSubview:self.appInfoView];
     
     /*
-    //BG Image for Tab Bar VC Views
+    // BG Image for Tab Bar VC Views
     UIImage* BGImage = [UIImage imageNamed:@"bg.png"];
     UIImageView* BGImageView = [[UIImageView alloc] initWithImage:BGImage];
     BGImageView.frame = [SMGUtilities getScreenFrameMinusStatusAndTabBars];
@@ -399,6 +412,7 @@
     
     #if DEBUG
     NSLog(@"openSM");
+    NSLog(@"%@", [sender description]);
     #endif
     
     [self animateSubMenuVisible:![self subMenuIsVisible] animated:YES];
@@ -412,7 +426,7 @@
     // get a frame calculation ready
     CGRect frame = self.busSubMenuView.frame;
     
-    // open subMenuButton [+] sticks out self.subMenuOpenerButtonSize pts
+    // open subMenuButton [+] (so it "sticks out" subMenuOpenerButtonSize pts)
     CGFloat height = frame.size.height-self.subMenuOpenerButtonSize;
     CGFloat width = frame.size.width-self.subMenuOpenerButtonSize;
     
@@ -440,6 +454,7 @@
 
 
 - (BOOL)subMenuIsVisible {
+    // If offscreen return false
     return self.busSubMenuView.frame.origin.y >= 0.0f;
 }
 

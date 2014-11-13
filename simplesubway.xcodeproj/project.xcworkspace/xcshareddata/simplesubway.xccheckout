@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>175C5BFE-A128-43E5-89B7-C117CBC98607</string>
+	<string>9AC4F6D6-ACB4-4062-AF62-A751908AC9AA</string>
 	<key>IDESourceControlProjectName</key>
 	<string>simplesubway</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>9BC89957-D140-49F2-8605-BA1D409C4130</key>
+		<key>ED20485568711737CC7C455289B78CA69772D042</key>
 		<string>https://github.com/hebrides/SimpleSubway.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>simplesubway.xcodeproj/project.xcworkspace</string>
+	<string>simplesubway.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>9BC89957-D140-49F2-8605-BA1D409C4130</key>
+		<key>ED20485568711737CC7C455289B78CA69772D042</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/hebrides/SimpleSubway.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>9BC89957-D140-49F2-8605-BA1D409C4130</string>
+	<string>ED20485568711737CC7C455289B78CA69772D042</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>9BC89957-D140-49F2-8605-BA1D409C4130</string>
+			<string>ED20485568711737CC7C455289B78CA69772D042</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SimpleSubway</string>
+			<string>SimpleSubwayXCode</string>
 		</dict>
 	</array>
 </dict>

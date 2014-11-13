@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		617AFD281971592A000E439C /* SMGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AFD271971592A000E439C /* SMGMapAnnotation.m */; };
 		61CEEA0B19661944008F63A4 /* FastCATiledLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CEEA0A19661944008F63A4 /* FastCATiledLayer.m */; };
 		61D6CD83196F92E3001AA11C /* main_tab_bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D6CD7B196F92E3001AA11C /* main_tab_bus.png */; };
 		61D6CD84196F92E3001AA11C /* main_tab_bus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D6CD7C196F92E3001AA11C /* main_tab_bus@2x.png */; };
@@ -2069,6 +2070,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		617AFD261971592A000E439C /* SMGMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMGMapAnnotation.h; path = simplesubway/SMGMapAnnotation.h; sourceTree = SOURCE_ROOT; };
+		617AFD271971592A000E439C /* SMGMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMGMapAnnotation.m; path = simplesubway/SMGMapAnnotation.m; sourceTree = SOURCE_ROOT; };
 		61CEEA0919661944008F63A4 /* FastCATiledLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastCATiledLayer.h; path = simplesubway/FastCATiledLayer.h; sourceTree = SOURCE_ROOT; };
 		61CEEA0A19661944008F63A4 /* FastCATiledLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastCATiledLayer.m; path = simplesubway/FastCATiledLayer.m; sourceTree = SOURCE_ROOT; };
 		61D6CD7B196F92E3001AA11C /* main_tab_bus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = main_tab_bus.png; path = simplesubway/main_tab_bus.png; sourceTree = "<group>"; };
@@ -6314,6 +6317,8 @@
 				61F5C851196B8F6000228FF4 /* bg.png */,
 				D2D1A2211861103A007CBBD5 /* SMGAppDelegate.h */,
 				D2D1A2221861103A007CBBD5 /* SMGAppDelegate.m */,
+				617AFD261971592A000E439C /* SMGMapAnnotation.h */,
+				617AFD271971592A000E439C /* SMGMapAnnotation.m */,
 				D245768718A7131C0057AD3B /* SMGUtilities.h */,
 				D245768818A7131C0057AD3B /* SMGUtilities.m */,
 				D245768018A5CF900057AD3B /* SMGViewController.h */,
@@ -8496,6 +8501,7 @@
 				61CEEA0B19661944008F63A4 /* FastCATiledLayer.m in Sources */,
 				61F5C8501969A38700228FF4 /* SMGButton.m in Sources */,
 				D245768218A5CF900057AD3B /* SMGViewController.m in Sources */,
+				617AFD281971592A000E439C /* SMGMapAnnotation.m in Sources */,
 				D2D1A2231861103A007CBBD5 /* SMGAppDelegate.m in Sources */,
 				D245768918A7131C0057AD3B /* SMGUtilities.m in Sources */,
 				D2D1A21F1861103A007CBBD5 /* main.m in Sources */,
