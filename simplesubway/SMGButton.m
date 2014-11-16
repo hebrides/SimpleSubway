@@ -22,7 +22,8 @@
         UIColor* menuWhite = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.98];
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-        self.titleLabel.font = [UIFont fontWithName:@"Trebuchet MS" size:14.0];
+        //self.titleLabel.font = [UIFont fontWithName:@"Trebuchet MS" size:14.0];
+        self.titleLabel.font = [UIFont fontWithName:@"Futura" size:14.0];
         self.tag = tag;
         [self setTitle:title forState:UIControlStateNormal];
         [self setTitleColor:menuWhite forState:UIControlStateNormal];
@@ -30,10 +31,10 @@
         
         // Tell the App Delegate to do something when button pressed (Not yet optimized into full menu class)
         SMGAppDelegate* delegate = (SMGAppDelegate*) [[UIApplication sharedApplication] delegate];
-        [self addTarget:delegate action:@selector(subMenuButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:delegate action:@selector(busMenuButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
         
         // Apple doesn't let you set the buttonhighlighted bgcolor
-        // so we'll make an image with the right color:
+        // so we'll make an image with the correct color:
         // orange = 255,180,0 ; yellow = 255,221,0 ; gray = 180,180,180
         // ----------------------------------------------------------------------
         

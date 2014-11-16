@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61539FF71A1546B600016450 /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 61539FF61A1546B600016450 /* Futura.ttc */; };
+		61539FF81A1546B700016450 /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 61539FF61A1546B600016450 /* Futura.ttc */; };
+		61539FFD1A1556E400016450 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61539FFC1A1556E400016450 /* icomoon.ttf */; };
+		61539FFE1A1556E400016450 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61539FFC1A1556E400016450 /* icomoon.ttf */; };
 		617AFD281971592A000E439C /* SMGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AFD271971592A000E439C /* SMGMapAnnotation.m */; };
 		61CEEA0B19661944008F63A4 /* FastCATiledLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CEEA0A19661944008F63A4 /* FastCATiledLayer.m */; };
 		61D6CD83196F92E3001AA11C /* main_tab_bus.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D6CD7B196F92E3001AA11C /* main_tab_bus.png */; };
@@ -2070,6 +2074,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		61539FF61A1546B600016450 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
+		61539FFC1A1556E400016450 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		617AFD261971592A000E439C /* SMGMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMGMapAnnotation.h; path = simplesubway/SMGMapAnnotation.h; sourceTree = SOURCE_ROOT; };
 		617AFD271971592A000E439C /* SMGMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMGMapAnnotation.m; path = simplesubway/SMGMapAnnotation.m; sourceTree = SOURCE_ROOT; };
 		61CEEA0919661944008F63A4 /* FastCATiledLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastCATiledLayer.h; path = simplesubway/FastCATiledLayer.h; sourceTree = SOURCE_ROOT; };
@@ -6340,6 +6346,8 @@
 		D2D1A2191861103A007CBBD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				61539FFC1A1556E400016450 /* icomoon.ttf */,
+				61539FF61A1546B600016450 /* Futura.ttc */,
 				D2D1A21A1861103A007CBBD5 /* SimpleSubway-Info.plist */,
 				D2D1A21B1861103A007CBBD5 /* InfoPlist.strings */,
 				D2D1A21E1861103A007CBBD5 /* main.m */,
@@ -7462,6 +7470,7 @@
 				D2873FAF18941D39006D6CD5 /* busQ2013_1000_15_1.png in Resources */,
 				D2873FDD18941D39006D6CD5 /* busQ2013_1000_17_9.png in Resources */,
 				D2873F9818941D39006D6CD5 /* busQ2013_1000_13_16.png in Resources */,
+				61539FF71A1546B600016450 /* Futura.ttc in Resources */,
 				D287433218941F61006D6CD5 /* busBx2013_1000_16_17.png in Resources */,
 				D2B723721894047400E1F899 /* busBklnNYC2013_500_4_7.png in Resources */,
 				D2D03BD1188772C10040DAD2 /* busManNYC2013_500_3_4.png in Resources */,
@@ -7941,6 +7950,7 @@
 				D2B724A11894047400E1F899 /* busBklnNYC2013_1000_11_13.png in Resources */,
 				D2D03BCE188772C10040DAD2 /* busManNYC2013_500_3_1.png in Resources */,
 				D2B723501894047400E1F899 /* busBklnNYC2013_500_1_6.png in Resources */,
+				61539FFD1A1556E400016450 /* icomoon.ttf in Resources */,
 				D2B723651894047400E1F899 /* busBklnNYC2013_500_3_5.png in Resources */,
 				D2D03C51188772C10040DAD2 /* busManNYC2013_1000_5_0.png in Resources */,
 				D2873FD418941D39006D6CD5 /* busQ2013_1000_17_0.png in Resources */,
@@ -8487,7 +8497,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61539FF81A1546B700016450 /* Futura.ttc in Resources */,
 				D2D1A23F1861103A007CBBD5 /* InfoPlist.strings in Resources */,
+				61539FFE1A1556E400016450 /* icomoon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

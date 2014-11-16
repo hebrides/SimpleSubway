@@ -31,7 +31,7 @@
 @property (nonatomic, strong)          SMGScrollView*      busQueensView;
 @property (nonatomic, strong)          SMGScrollView*      busBronxView;
 @property (nonatomic, strong)          NSArray*            busMapViews;
-@property (nonatomic, strong)          UIButton*             busSubMenuView;
+@property (nonatomic, strong)          UIButton*           busSubMenuView;
 @property (nonatomic)                  CGFloat             subMenuHeight;
 @property (nonatomic)                  CGFloat             subMenuWidth;
 @property (nonatomic)                  CGFloat             subMenuOpenerButtonSize;
@@ -42,10 +42,12 @@
 
 @property (nonatomic, strong)          UIView*             fakeStatusBarView;
 @property (nonatomic, strong)          UIButton*           openSubMenuButton;
+@property (nonatomic, strong)          UIImage*            menuOpenedBI;
+@property (nonatomic, strong)          UIImage*            menuClosedBI;
 @property (nonatomic, strong)          UIButton*           openTabBarButton;
 @property (nonatomic, strong)          UIColor*            menuBGColor;
 @property (nonatomic)                  CGPathDrawingMode   drawingMode;
-@property (nonatomic)                  BOOL                openSubMenuButtonTouched;
+@property (nonatomic)                  BOOL                menuOpen;
 @property (nonatomic)                  BOOL                iOS7;
 
 
@@ -56,17 +58,17 @@
 @implementation SMGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    #ifdef DEBUG
+    
+#ifdef DEBUG
     NSLog(@"Debug Mode!");
-    #endif
+#endif
     
     
     //
     // Set App Styles
     // --------------
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
-     self.menuBGColor = [UIColor colorWithRed:247/255.0f green:166/255.0f blue:0/255.0f alpha:1.0f];
+    self.menuBGColor = [UIColor colorWithRed:247/255.0f green:166/255.0f blue:0/255.0f alpha:1.0f];
     
     //
     // Determine iOS 7
@@ -138,18 +140,18 @@
         self.fakeStatusBarView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
         
         /*  for (UIView *subView in self.window.subviews) {
-            
-            if ([subView isKindOfClass:[UIScrollView class]]) {
-                subView.frame = CGRectMake(subView.frame.origin.x, subView.frame.origin.y + STATUSBARHEIGHT, subView.frame.size.width, subView.frame.size.height - STATUSBARHEIGHT);
-            } else {
-                subView.frame = CGRectMake(subView.frame.origin.x, subView.frame.origin.y + STATUSBARHEIGHT, subView.frame.size.width, subView.frame.size.height);
-            }
-        }*/
-
+         
+         if ([subView isKindOfClass:[UIScrollView class]]) {
+         subView.frame = CGRectMake(subView.frame.origin.x, subView.frame.origin.y + STATUSBARHEIGHT, subView.frame.size.width, subView.frame.size.height - STATUSBARHEIGHT);
+         } else {
+         subView.frame = CGRectMake(subView.frame.origin.x, subView.frame.origin.y + STATUSBARHEIGHT, subView.frame.size.width, subView.frame.size.height);
+         }
+         }*/
+        
         [self.tabBarController.view addSubview:self.fakeStatusBarView];
         self.fakeStatusBarView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth;
     }
-
+    
     
     return YES;
 }
@@ -183,7 +185,7 @@
     CLLocationCoordinate2D  ctrpoint;
     ctrpoint.latitude = 40.752;
     ctrpoint.longitude =-73.979;
-   
+    
     // SMGMapAnnotation *fooAnnotation = [[SMGMapAnnotation alloc] initWithCoordinates:ctrpoint placeName:@"Foo" description:@"Bar"];
     // [self.mapkitMapView addAnnotation:fooAnnotation];
     
@@ -227,7 +229,7 @@
     CGFloat tabBarHeight = self.tabBarController.tabBar.frame.size.height;
     self.subMenuWidth = [[UIScreen mainScreen] bounds].size.width;// 140.0f;
     NSUInteger numSubMenuButtons = 4;
-    self.subMenuOpenerButtonSize = 28.0;
+    self.subMenuOpenerButtonSize = 45.0;
     self.subMenuHeight = (tabBarHeight*numSubMenuButtons)+self.subMenuOpenerButtonSize;
     
     
@@ -235,25 +237,36 @@
     // Create the bus submenu view
     // ---------------------------
     self.busSubMenuView = [[UIButton alloc] init];
-    self.busSubMenuView.frame = CGRectMake(-self.subMenuWidth+self.subMenuOpenerButtonSize,-self.subMenuHeight+STATUSBARHEIGHT+self.subMenuOpenerButtonSize, self.subMenuWidth, self.subMenuHeight);
-    self.busSubMenuView.backgroundColor =  [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
-    self.busSubMenuView.alpha = 0.4;
+    self.busSubMenuView.frame = CGRectMake(0,-self.subMenuHeight+STATUSBARHEIGHT+self.subMenuOpenerButtonSize, self.subMenuWidth, self.subMenuHeight);
     
-#pragma mark - SubMenu Opener
+    self.busSubMenuView.backgroundColor =  [UIColor blackColor];
+    [self.busSubMenuView setHidden:YES];
+    //self.busSubMenuView.alpha = 0.0;
+    
+#pragma mark - make subMenu opener button
     
     //
-    // Create bus submenu opener  ☰ + X
-    // ---------------------------------
+    // Create bus submenu opener button
+    // --------------------------------
     self.openSubMenuButton = [[UIButton alloc] init];
-    self.openSubMenuButton.frame = CGRectMake(self.subMenuWidth-self.subMenuOpenerButtonSize,tabBarHeight*4, self.subMenuOpenerButtonSize, self.subMenuOpenerButtonSize);
-    self.openSubMenuButton.titleLabel.font = [UIFont fontWithName:@"Verdana" size:16.0];
-    [self.openSubMenuButton setTitleColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.9] forState:UIControlStateNormal];
-    //self.openSubMenuButton.backgroundColor = [UIColor redColor];
-    [self.openSubMenuButton setTitle:@"+" forState:UIControlStateNormal];
-    //self.openSubMenuButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    self.openSubMenuButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0,2,0);
-    [self.openSubMenuButton addTarget:self action:@selector(openSubMenuButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
-
+    // self.openSubMenuButton.frame = CGRectMake(self.subMenuWidth-self.subMenuOpenerButtonSize,STATUSBARHEIGHT, self.subMenuOpenerButtonSize, self.subMenuOpenerButtonSize);
+    self.openSubMenuButton.frame = CGRectMake(0,STATUSBARHEIGHT, self.subMenuOpenerButtonSize, self.subMenuOpenerButtonSize);
+    [self makeButtonStates];
+    [self.openSubMenuButton setBackgroundImage:self.menuClosedBI forState:UIControlStateNormal];
+    
+    // This is the 'font - icon' way to make a button
+    // Note: Custom fonts must be added to project and to plist file.
+    // Drag to folder in xcode and check add to group and targets. (☰ + X v)
+    // ----------------------------------------------------------------------
+    
+    // self.openSubMenuButton.titleLabel.font = [UIFont fontWithName:@"icomoon" size:28.0];
+    // [self.openSubMenuButton setTitle:@" " forState:UIControlStateNormal];
+    // [self.openSubMenuButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    // self.openSubMenuButton.contentEdgeInsets = UIEdgeInsetsMake(0,0,2,0);
+    
+    [self.openSubMenuButton addTarget:self action:@selector(animateBusMenu)forControlEvents:UIControlEventTouchUpInside];
+    [self.openSubMenuButton setHidden:YES];
+    self.menuOpen = NO; // first time app opens, menu is not open
     
     //
     // Create buttons for submenu
@@ -271,24 +284,23 @@
     [self.busSubMenuView addSubview:secondButton];
     [self.busSubMenuView addSubview:thirdButton];
     [self.busSubMenuView addSubview:fourthButton];
-    [self.busSubMenuView addSubview:self.openSubMenuButton];
-    [self.busSubMenuView setHidden:YES];
-    self.openSubMenuButtonTouched = NO;
     
     //
-    // Add submenu as subview of tabBarController
+    // Add submenu and opener as subview of tabBarController
     // ----------------------------------------
     [self.tabBarController.view addSubview:self.busSubMenuView];
+    [self.tabBarController.view addSubview:self.openSubMenuButton];
     
-    //
-    // Set flex margin, height & width for buttons and bus submenu
-    // -----------------------------------------------------------
-    firstButton.autoresizingMask =
-    secondButton.autoresizingMask =
-    thirdButton.autoresizingMask =
-    fourthButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-    self.busSubMenuView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |  UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-  
+    /*
+     //
+     // Set flex margin, height & width for buttons and bus submenu
+     // -----------------------------------------------------------
+     firstButton.autoresizingMask =
+     secondButton.autoresizingMask =
+     thirdButton.autoresizingMask =
+     fourthButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+     self.busSubMenuView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |  UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+     */
 }
 
 
@@ -315,12 +327,12 @@
     [self.appInfoVC.view addSubview:self.appInfoView];
     
     /*
-    // BG Image for Tab Bar VC Views
-    UIImage* BGImage = [UIImage imageNamed:@"bg.png"];
-    UIImageView* BGImageView = [[UIImageView alloc] initWithImage:BGImage];
-    BGImageView.frame = [SMGUtilities getScreenFrameMinusStatusAndTabBars];
-    BGImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    [self.tabBarController.view insertSubview:BGImageView atIndex:0];
+     // BG Image for Tab Bar VC Views
+     UIImage* BGImage = [UIImage imageNamed:@"bg.png"];
+     UIImageView* BGImageView = [[UIImageView alloc] initWithImage:BGImage];
+     BGImageView.frame = [SMGUtilities getScreenFrameMinusStatusAndTabBars];
+     BGImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+     [self.tabBarController.view insertSubview:BGImageView atIndex:0];
      */
     
     // Grey Background
@@ -335,26 +347,25 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     if([viewController.title  isEqual: @"Bus"]) {
-
-        [self.busSubMenuView setHidden:NO];
+        [self.openSubMenuButton setHidden:NO];
     }
     else {
-        [self.busSubMenuView setHidden:YES];
-        [self animateSubMenuVisible:NO animated:YES];
+        [self.openSubMenuButton setHidden:YES];
+        if (self.menuOpen) [self animateBusMenu];
     }
     
 }
 
 
-- (void) subMenuButtonTouched:(UIButton*)button {
+- (void) busMenuButtonTouched:(UIButton*)button {
     
-    #ifdef DEBUG
-    NSLog(@"Submenu %@ Button : %li Pressed", button.titleLabel.text, (long)button.tag);
-    #endif
+#ifdef DEBUG
+    NSLog(@"!!! Submenu %@ Button : %li Pressed !!!", button.titleLabel.text, (long)button.tag);
+#endif
     
-    //HIDE and SHOW for now... probably better to use swap layers
-
-    [self animateSubMenuVisible:![self subMenuIsVisible] animated:YES];
+    //HIDE and SHOW existing layers for now... probably better to use swap layers
+    [self animateBusMenu];
+    
     switch (button.tag) {
         case 0: {
             [self.busManhattanView setHidden:NO];
@@ -385,9 +396,9 @@
     // action of the controller if it exists. Open other links in Safari.
     // ------------------------------------------------------------------
     
-    #ifdef DEBUG
+#ifdef DEBUG
     NSLog(@"Action from UIWebView!");
-    #endif
+#endif
     
     NSString *fragment, *scheme;
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
@@ -406,59 +417,80 @@
     return YES;
 }
 
-#pragma mark - SubMenu Opener functions
+#pragma mark - busMenu opener
 
-- (void)openSubMenuButtonTouched:(id)sender {
-    
-    #if DEBUG
-    NSLog(@"openSM");
-    NSLog(@"%@", [sender description]);
-    #endif
-    
-    [self animateSubMenuVisible:![self subMenuIsVisible] animated:YES];
-}
 
-- (void)animateSubMenuVisible:(BOOL)visible animated:(BOOL)animated {
+- (void)animateBusMenu {
+#if DEBUG
+    NSLog(@"### ---> animate menu <--- ###");
+    NSLog(@"### menu Y = %f ###",self.busSubMenuView.frame.origin.y);
+   // self.openSubMenuButton.backgroundColor = [UIColor colorWithRed:255/255.0f green:180/255.0f blue:0/255.0f alpha:.5f];
+#endif
+    // get current frame, check if menu open, assign open and closed menu states
+    CGRect busMenuFrame = self.busSubMenuView.frame;
+    CGRect busMenuOpenButtonFrame = self.openSubMenuButton.frame;
+    CGFloat offsetY = busMenuFrame.size.height-self.subMenuOpenerButtonSize;
+    CGFloat menuOffsetY = (self.menuOpen)? -offsetY : offsetY;
+    CGFloat busMenuNewAlpha = (self.menuOpen)? 0.0 : 1.0;
+    if (self.menuOpen) [self.openSubMenuButton setBackgroundImage:(self.menuClosedBI) forState:UIControlStateNormal];
+                  else [self.openSubMenuButton setBackgroundImage:(self.menuClosedBI) forState:UIControlStateNormal];
     
-    // check if the current state matches the desired state
-    if ([self subMenuIsVisible] == visible) return;
+    // The 'font - icon' Method:
+    // UIColor* titleColor = (self.menuOpen)? [UIColor blackColor] : [UIColor whiteColor];
+    // [self.openSubMenuButton setTitleColor:titleColor forState:UIControlStateNormal];
     
-    // get a frame calculation ready
-    CGRect frame = self.busSubMenuView.frame;
-    
-    // open subMenuButton [+] (so it "sticks out" subMenuOpenerButtonSize pts)
-    CGFloat height = frame.size.height-self.subMenuOpenerButtonSize;
-    CGFloat width = frame.size.width-self.subMenuOpenerButtonSize;
-    
-    CGFloat offsetY = (visible)? height : -height;
-    CGFloat offsetX = (visible)? width : -width;
-    CGFloat bgAlpha = (visible)? 1.0 : 0.4;
-    
-    // change submenu button [+], [x]
-    NSString* openIcon = (visible)? @"x" : @"+";
-    [self.openSubMenuButton setTitle:openIcon forState:UIControlStateNormal];
-
-    // 0.0 (no animation)
-    CGFloat duration = (animated)? 0.3 : 0.0;
-    
-    // animate
-    [UIView animateWithDuration:duration animations:^{
-        self.busSubMenuView.frame = (visible)? CGRectOffset(frame, offsetX, 0): CGRectOffset(frame, 0, offsetY) ;
-        self.busSubMenuView.alpha = bgAlpha;
+       self.openSubMenuButton.transform = (self.menuOpen)? CGAffineTransformMakeScale(1, 1) : CGAffineTransformMakeScale(1, -1);
+    // CGAffineTransform openButtonRotation = (self.menuOpen)? CGAffineTransformMakeRotation(2*M_PI) : CGAffineTransformMakeRotation(M_PI);
+    // [UIView animateWithDuration:0.3 animations:^{self.openSubMenuButton.transform = openButtonRotation;}];
+    [self.busSubMenuView setHidden:NO];
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        self.busSubMenuView.frame = CGRectOffset(busMenuFrame, 0, menuOffsetY);
+        self.openSubMenuButton.frame = CGRectOffset(busMenuOpenButtonFrame, 0, menuOffsetY);
+        self.busSubMenuView.alpha =  busMenuNewAlpha;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:duration animations:^{
-            self.busSubMenuView.frame = CGRectOffset(frame, offsetX, offsetY);
-        }];
+        self.menuOpen = !self.menuOpen;
     }];
 }
 
 
-- (BOOL)subMenuIsVisible {
-    // If offscreen return false
-    return self.busSubMenuView.frame.origin.y >= 0.0f;
+- (void) makeButtonStates {
+    
+    UIGraphicsBeginImageContext(CGSizeMake(self.subMenuOpenerButtonSize, self.subMenuOpenerButtonSize));
+    //// Oval Drawing
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(10, 10, 26, 26)];
+    [UIColor.whiteColor setFill];
+    [ovalPath fill];
+    
+    //// Bezier 2 Drawing
+    UIBezierPath* bezier2Path = UIBezierPath.bezierPath;
+    [bezier2Path moveToPoint: CGPointMake(30.38, 30.38)];
+    [bezier2Path addCurveToPoint: CGPointMake(15.37, 30.38) controlPoint1: CGPointMake(26.23, 34.52) controlPoint2: CGPointMake(19.52, 34.52)];
+    [bezier2Path addCurveToPoint: CGPointMake(15.37, 15.43) controlPoint1: CGPointMake(11.22, 26.24) controlPoint2: CGPointMake(11.22, 19.54)];
+    [bezier2Path addCurveToPoint: CGPointMake(30.38, 15.43) controlPoint1: CGPointMake(19.52, 11.32) controlPoint2: CGPointMake(26.23, 11.29)];
+    [bezier2Path addCurveToPoint: CGPointMake(30.38, 30.38) controlPoint1: CGPointMake(34.53, 19.57) controlPoint2: CGPointMake(34.51, 26.24)];
+    [bezier2Path closePath];
+    [bezier2Path moveToPoint: CGPointMake(27.91, 19.57)];
+    [bezier2Path addLineToPoint: CGPointMake(22.89, 24.57)];
+    [bezier2Path addLineToPoint: CGPointMake(17.87, 19.57)];
+    [bezier2Path addLineToPoint: CGPointMake(16.19, 21.24)];
+    [bezier2Path addLineToPoint: CGPointMake(22.86, 27.91)];
+    [bezier2Path addLineToPoint: CGPointMake(29.56, 21.24)];
+    [bezier2Path addLineToPoint: CGPointMake(27.91, 19.57)];
+    [bezier2Path closePath];
+    bezier2Path.miterLimit = 4;
+    
+    [[UIColor colorWithRed:.9 green:.9 blue:.9 alpha:1 ] setFill];
+    [bezier2Path fill];
+    self.menuOpenedBI= UIGraphicsGetImageFromCurrentImageContext();
+    
+    [UIColor.blackColor setFill];
+    [bezier2Path fill];
+    self.menuClosedBI= UIGraphicsGetImageFromCurrentImageContext();
+ 
+    UIGraphicsEndImageContext();
+    
 }
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     
@@ -467,7 +499,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
