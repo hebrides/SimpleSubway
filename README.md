@@ -1,7 +1,7 @@
 SimpleSubway
 ============
 
-*Note: In this branch I added a new menu opener button  by experimenting with home made [icon fonts](https://icomoon.io/), and drawing background images for buttons with CG. This project is at the 'mediocre enough' for now and I'm moving on to work on other ideas. Lots of concepts and code here modified and snipped from Apple's documentation and [Ray Wenderlich's awesome site](http://www.raywenderlich.com/). It was fun learning with this project!* *(Below are my original notes)*
+*Note: In this branch I added a new menu opener button  by experimenting with home made [icon fonts](https://icomoon.io/), and drawing background images for buttons with CG. This project is at the 'mediocre enough' stage for now and I'm moving on to work on other ideas. Lots of concepts and code here modified and snipped from Apple's documentation and [Ray Wenderlich's awesome site](http://www.raywenderlich.com/). It was fun learning with this project!* *(Below are my original notes)*
 
 My first attempt at an iOS app. The goal for this project was to learn to make and publish a simple iOS app. I chose a subway map application because it seemed simple enough and I figured (rightly) there would be plenty of resources online to help me along the way. 
 
