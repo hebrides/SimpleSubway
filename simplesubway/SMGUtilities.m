@@ -2,8 +2,8 @@
 //  SMGUtilities.m
 //
 //
-//  Created by Marcus Lewis on 2/8/14.
-//  Copyright (c) 2014 Marcus Lewis. All rights reserved.
+//  Created by Bolt Action on 2/8/14.
+//  Copyright (c) 2014 Bolt Action. All rights reserved.
 //
 
 #import "SMGUtilities.h"

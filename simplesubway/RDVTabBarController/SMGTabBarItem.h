@@ -1,7 +1,7 @@
 // SMGTabBarItem.h
 // SMGTabBarController
 //
-// Copyright (c) 2017 Marcus Lewis
+// Copyright (c) 2017 Bolt Action
 
 #import <UIKit/UIKit.h>
 #import "SMGTabSubMenu.h"

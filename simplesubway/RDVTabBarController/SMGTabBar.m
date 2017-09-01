@@ -1,7 +1,7 @@
 // SMGTabBar.m
 // SMGTabBarController
 //
-// Copyright (c) 2017 Marcus Lewis
+// Copyright (c) 2017 Bolt Action
 
 
 #import "SMGTabBar.h"

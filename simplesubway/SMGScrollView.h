@@ -2,8 +2,8 @@
 //  SMGScrollView.h
 //  SubwaySimple
 //
-//  Created by Marcus Lewis on 12/30/13.
-//  Copyright (c) 2017 Marcus Lewis. All rights reserved.
+//  Created by Bolt Action on 12/30/13.
+//  Copyright (c) 2017 Bolt Action. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

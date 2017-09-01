@@ -2,8 +2,8 @@
 //  SMGUtilities.h
 //  SimpleSubway
 //
-//  Created by Marcus Lewis on 2/8/14.
-//  Copyright (c) 2017 Marcus Lewis. All rights reserved.
+//  Created by Bolt Action on 2/8/14.
+//  Copyright (c) 2017 Bolt Action. All rights reserved.
 //
 
 

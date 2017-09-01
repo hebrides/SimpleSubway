@@ -1,8 +1,8 @@
 //
 //  Simple Subway
 //
-//  Created by Marcus Lewis on 12/17/13.
-//  Copyright (c) 2017 Marcus Lewis. All rights reserved.
+//  Created by Bolt Action on 12/17/13.
+//  Copyright (c) 2017 Bolt Action. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

@@ -3,7 +3,7 @@
 //  simplesubway
 //
 //  Created by Marcus Skye Lewis on 2/11/17.
-//  Copyright © 2017 Marcus Lewis. All rights reserved.
+//  Copyright © 2017 Bolt Action. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

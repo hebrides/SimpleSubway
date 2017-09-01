@@ -3,7 +3,7 @@
 //  simplesubway
 //
 //  Created by Marcus Skye Lewis on 7/6/14.
-//  Copyright (c) 2014 Marcus Lewis. All rights reserved.
+//  Copyright (c) 2014 Bolt Action. All rights reserved.
 //
 
 #import "SMGButton.h"
