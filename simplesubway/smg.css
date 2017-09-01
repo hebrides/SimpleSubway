@@ -9,28 +9,27 @@ body {
 	margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
-	background-color:#FFF;
-/*	background:url(bg.png) top left repeat-x,
-		       url(bg-bottom.png) bottom left repeat-x; */
+    background-color: #FFFFFF;
+
 }
 
 a:link, a:visited, a:hover {
-	color: #000;
+	color: #2a2a2a;
     text-decoration: none;
 }
 	
 .thePage {
-	margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
-	background-color:#FFF;
-	z-index:0;
+    background-color:#FFFFFF;
+    z-index:0;
 
 }
 
 .SMGMobile {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 3.5em;
-	color: #000;
+	color: #fff;
 	padding: 5px;
 	margin-top: 0px;
 	margin-right: 10px;
@@ -51,7 +50,7 @@ a:link, a:visited, a:hover {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-size: 1em;
     text-align: center;
-    color: #000;
+    color: #2a2a2a;
 
 }
 

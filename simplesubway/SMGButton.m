@@ -18,27 +18,25 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIColor* menuBlack = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.70];
-        UIColor* menuWhite = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.98];
+        UIColor* menuBG = GRAY_DARK;
+        UIColor* menuText = WHITE;
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-        self.titleLabel.font = [UIFont fontWithName:@"Trebuchet MS" size:14.0];
+        self.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:14.0];
+       // self.titleLabel.font = [UIFont fontWithName:@"Trebuchet MS" size:14.0];
         self.tag = tag;
         [self setTitle:title forState:UIControlStateNormal];
-        [self setTitleColor:menuWhite forState:UIControlStateNormal];
-        [self setTitleColor:menuBlack forState:UIControlStateHighlighted];
+        [self setTitleColor:menuText forState:UIControlStateNormal];
+        [self setTitleColor:menuBG forState:UIControlStateHighlighted];
         
-        // Tell the App Delegate to do something when button pressed (Not yet optimized into full menu class)
-        SMGAppDelegate* delegate = (SMGAppDelegate*) [[UIApplication sharedApplication] delegate];
-        [self addTarget:delegate action:@selector(subMenuButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+
         
         // Apple doesn't let you set the buttonhighlighted bgcolor
-        // so we'll make an image with the right color:
-        // orange = 255,180,0 ; yellow = 255,221,0 ; gray = 180,180,180
-        // ----------------------------------------------------------------------
+        // so we'll make an image with the color we want
+        // -----------------------------------------------------------------------------
         
         CGSize bgColorRect = CGSizeMake(frame.size.width, frame.size.height);
-        UIColor *bgColor = [UIColor colorWithRed:255/255.0f green:180/255.0f blue:0/255.0f alpha:1.0f];
+        UIColor *bgColor = BRAND_COLOR_ORANGE;
         UIGraphicsBeginImageContext(bgColorRect);
         
         CGContextRef context = UIGraphicsGetCurrentContext();

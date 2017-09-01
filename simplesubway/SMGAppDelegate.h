@@ -3,25 +3,27 @@
 //  NYC Subway Map
 //
 //  Created by Marcus Lewis on 12/17/13.
-//  Copyright (c) 2013 Marcus Lewis. All rights reserved.
+//  Copyright (c) 2017 Marcus Lewis. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SMGTabBarController.h"
+#import "SMGTabBar.h"
+#import "SMGTabBarItem.h"
+#import "SMGUtilities.h"
 
 
 @interface SMGAppDelegate : UIResponder <UIApplicationDelegate>
 
 //
-// Properties here can be accessed by importing SMGAppDelegate.h
-// and creating a pointer to the shared delegate 
-// -------------------------------------------------------------
+// Properties put here (header file) can be accessed by importing SMGAppDelegate.h
+// and creating a pointer to the shared delegate
+// -------------------------------------------------------------------------------
 
-@property (strong, nonatomic)          UIWindow *window;
-@property (nonatomic, strong)          UITabBarController* tabBarController;
+@property (nonatomic, strong)           UIWindow*               window;
+@property (nonatomic, strong)           SMGTabBarController*    tabBarController;
 
-- (void) animateSubMenuVisible:(BOOL)visible animated:(BOOL)animated;
-- (void) subMenuButtonTouched:(UIButton*)button;
 
 @end

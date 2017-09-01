@@ -2,7 +2,7 @@
 //  Simple Subway
 //
 //  Created by Marcus Lewis on 12/17/13.
-//  Copyright (c) 2013 Marcus Lewis. All rights reserved.
+//  Copyright (c) 2017 Marcus Lewis. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

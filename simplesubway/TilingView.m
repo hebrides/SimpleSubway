@@ -141,12 +141,12 @@
     // instead of "imageName_250..."
     
     NSString *tileName = [NSString stringWithFormat:@"%@_%d_%d_%d", _imageName, (int) roundf(scale * 1000), col, row];
+  
     
-    
-    #ifdef DEBUG
-    NSLog(@"%@ will be shown at scale %f, %i",tileName, scale, (int) roundf(scale * 1000));
-    #endif
-    
+//#ifdef DEBUG
+//    NSLog(@"%@ will be shown at scale %f, %i",tileName, scale, (int) roundf(scale * 1000));
+//#endif
+  
     NSString *path = [[NSBundle mainBundle] pathForResource:tileName ofType:@"png"]; //@"jpg"];
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     return image;

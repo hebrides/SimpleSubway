@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 /*
- This subclass was created to be able to set the background color for UIControlState
+ This subclass sets background color for UIControlState
  */
 
 @interface SMGButton : UIButton <NSCopying>
@@ -25,7 +25,11 @@
 }
 
 - (id)initWithFrame:(CGRect)    frame
-                tag:(NSInteger) tag
+                tag:(NSInteger) index
               title:(NSString*) title;
+
+@end
+
+@protocol SMGButtonDelegate <NSObject>
 
 @end
