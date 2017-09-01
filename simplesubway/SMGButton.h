@@ -24,6 +24,8 @@
     
 }
 
-- (id)initWithFrame:(CGRect)frame tag:(NSInteger)tag title:(NSString*)title;
+- (id)initWithFrame:(CGRect)    frame
+                tag:(NSInteger) tag
+              title:(NSString*) title;
 
 @end

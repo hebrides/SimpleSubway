@@ -21,7 +21,7 @@
 @property (strong, nonatomic)          UIWindow *window;
 @property (nonatomic, strong)          UITabBarController* tabBarController;
 
-- (void)animateSubMenuVisible:(BOOL)visible animated:(BOOL)animated;
+- (void) animateSubMenuVisible:(BOOL)visible animated:(BOOL)animated;
 - (void) subMenuButtonTouched:(UIButton*)button;
 
 @end

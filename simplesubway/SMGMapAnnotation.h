@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mapkit/MapKit.h>
 
-@interface SMGMapAnnotation : NSObject
+@interface SMGMapAnnotation : NSObject <MKAnnotation>
+
+@property (nonatomic) CLLocationCoordinate2D    coordinate;
+@property (nonatomic, copy) NSString*           title;
+@property (nonatomic, copy) NSString*           subtitle;
+
+- (id)initWithCoordinates: (CLLocationCoordinate2D)  location
+                placeName: (NSString *)              placeName
+              description: (NSString *)              description;
+
 
 @end
