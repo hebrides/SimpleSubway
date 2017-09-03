@@ -252,6 +252,8 @@
   // App Info Webview
   // -----------------
   self.appInfoView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.mainViewFrame.size.width, self.mainViewFrame.size.height)];
+  self.appInfoView.backgroundColor = [UIColor clearColor];
+  [self.appInfoView setOpaque:NO];
   NSURL *url = [[NSBundle mainBundle] URLForResource:@"app_info" withExtension:@"html"];
   [self.appInfoView loadRequest:[NSURLRequest requestWithURL:url]];
   self.appInfoView.delegate = self;
@@ -261,7 +263,7 @@
 
 - (void) makeViewControllers {
   
-  UIColor *bgColorForVCs = [UIColor colorWithPatternImage:[SMGUtilities imageWithName:@"bg.png" Size:SCREENFRAME.size]];
+  UIColor *bgColorForVCs = [UIColor colorWithPatternImage:[SMGUtilities imageWithName:@"bg-dk.png" Size:SCREENFRAME.size]];
   
   // Bike
   self.bikeMapVC = [[SMGViewController alloc] init];
@@ -291,6 +293,7 @@
   // About
   self.appInfoVC = [[SMGViewController alloc] init];
   [self.appInfoVC.view addSubview:self.appInfoView];
+  self.appInfoVC.view.backgroundColor = [UIColor colorWithPatternImage:[SMGUtilities imageWithName:@"bg-lt.png" Size:SCREENFRAME.size]];
  
 
 
