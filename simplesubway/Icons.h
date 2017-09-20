@@ -9,8 +9,9 @@
 //  http://www.paintcodeapp.com/sketch
 //
 
-@import UIKit;
+#import "SMGUtilities.h"
 
+@import UIKit;
 
 
 @interface Icons : NSObject
@@ -42,6 +43,8 @@ extern CGRect IconsResizingBehaviorApply(IconsResizingBehavior behavior, CGRect 
 + (void)drawBicycleFilled;
 + (void)drawBicycleFilledWithFrame:(CGRect)targetFrame resizing:(IconsResizingBehavior)resizing;
 
++ (void)drawHalfCircle;
++ (void)drawHalfCircleWithFrame:(CGRect)targetFrame resizing:(IconsResizingBehavior)resizing;
 
 #pragma mark - Canvas Images
 
@@ -51,6 +54,6 @@ extern CGRect IconsResizingBehaviorApply(IconsResizingBehavior behavior, CGRect 
 + (UIImage *)imageOfSubFilled;
 + (UIImage *)imageOfBusFilled;
 + (UIImage *)imageOfBicycleFilled;
-
++ (UIImage *)imageOfHalfCircle;
 
 @end

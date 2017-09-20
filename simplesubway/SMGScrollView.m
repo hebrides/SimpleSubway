@@ -10,11 +10,10 @@
 @property (nonatomic)           CGSize          imageSize;
 @property (nonatomic)           CGPoint         pointToCenterAfterResize;
 @property (nonatomic)           CGFloat         scaleToRestoreAfterResize;
-
 @end
 
-//@synthesize
 
+//@synthesize
 @implementation SMGScrollView
 
 - (id)initWithTitle:(NSString*)title index:(NSInteger)index frame:(CGRect)frame imageName:(NSString*)imageName imageSize:(CGSize)imageSize
@@ -73,8 +72,8 @@
     UITapGestureRecognizer *oneFingerTapRecognizer = [[UITapGestureRecognizer alloc]
                                                       initWithTarget:self
                                                       action:@selector(scrollViewOneFingerTapped:)];
-    twoFingerTapRecognizer.numberOfTapsRequired = 1;
-    twoFingerTapRecognizer.numberOfTouchesRequired = 1;
+    oneFingerTapRecognizer.numberOfTapsRequired = 1;
+    oneFingerTapRecognizer.numberOfTouchesRequired = 1;
     [self addGestureRecognizer:oneFingerTapRecognizer];
     
   }
@@ -163,6 +162,11 @@
 #ifdef DEBUG
   NSLog(@"One finger Tapped");
 #endif
+  
+  if ([[self smgdelegate] respondsToSelector:@selector(scrollViewTapped:)]) {
+    [self.smgdelegate scrollViewTapped:self];
+
+  }
 }
 
 - (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer {

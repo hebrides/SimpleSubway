@@ -21,6 +21,7 @@
 @property (nonatomic, strong)           NSString*              title;
 @property (nonatomic)                   NSInteger              tabNumber;
 @property (nonatomic)                   BOOL                   menuOpen;
+@property (nonatomic)                   BOOL                   animating;
 
 - (id)initWithSubMenuViews:(NSArray*)itemNames title:(NSString*)title tabNumber:(NSInteger)tabNumber;
 

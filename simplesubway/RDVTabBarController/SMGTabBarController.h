@@ -16,7 +16,7 @@
 
 @property (nonatomic, copy)     NSArray*                          viewControllers;
 @property (nonatomic, copy)     NSMutableArray*                   subMenus;
-@property (nonatomic, weak)     id<SMGTabBarControllerDelegate>   delegate;
+@property (nonatomic, weak)     id <SMGTabBarControllerDelegate>  delegate;
 @property (nonatomic, readonly) SMGTabBar*                        tabBar;
 @property (nonatomic, weak)     UIViewController*                 selectedViewController;
 @property (nonatomic)           NSUInteger                        selectedIndex;

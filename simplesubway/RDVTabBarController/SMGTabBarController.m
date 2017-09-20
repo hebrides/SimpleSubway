@@ -266,6 +266,9 @@
     
   }
 
+  // close the sub menus
+//  [self closeSubMenus];
+  
  // [_selectedViewController.view bringSubviewToFront:[subMenu.subMenuViews objectAtIndex:subMenuItemIndex]];
 
   

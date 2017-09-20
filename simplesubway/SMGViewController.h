@@ -9,10 +9,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-//#import "SMGViewHeader.h"
-//#import "SMGGraphics.h"
-//#import "SMGModel.h"
-//#import "SMGTools.h"
+
+
+
 
 @interface SMGViewController : UIViewController
 

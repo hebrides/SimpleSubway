@@ -538,4 +538,84 @@ CGRect IconsResizingBehaviorApply(IconsResizingBehavior behavior, CGRect rect, C
 }
 
 
+// Half Circle
+
++ (void)drawHalfCircle {
+  [Icons drawHalfCircleWithFrame:CGRectMake(0, 0, 70, 14) resizing:IconsResizingBehaviorAspectFit];
+}
++ (void)drawHalfCircleWithFrame:(CGRect)targetFrame resizing:(IconsResizingBehavior)resizing {
+  //! General Declarations
+  CGContextRef context = UIGraphicsGetCurrentContext();
+  
+  //! Resize to Target Frame
+  CGContextSaveGState(context);
+  CGRect resizedFrame = IconsResizingBehaviorApply(resizing, CGRectMake(0, 0, 70, 14), targetFrame);
+  CGContextTranslateCTM(context, resizedFrame.origin.x, resizedFrame.origin.y);
+  CGContextScaleCTM(context, resizedFrame.size.width / 70, resizedFrame.size.height / 14);
+  
+  //! Background Color
+  [UIColor.clearColor setFill];
+  CGContextFillRect(context, CGContextGetClipBoundingBox(context));
+  
+  //! HalfCircle
+  {
+    CGContextSaveGState(context);
+    
+    //! halfCircle
+    UIBezierPath *halfCircle = [UIBezierPath bezierPath];
+    [halfCircle moveToPoint:CGPointMake(45.84, 10)];
+    [halfCircle addCurveToPoint:CGPointMake(22.92, 0) controlPoint1:CGPointMake(41.28, 4.02) controlPoint2:CGPointMake(32.73, 0)];
+    [halfCircle addCurveToPoint:CGPointMake(0, 10) controlPoint1:CGPointMake(13.11, 0) controlPoint2:CGPointMake(4.56, 4.02)];
+    [halfCircle addLineToPoint:CGPointMake(45.84, 10)];
+    [halfCircle addLineToPoint:CGPointMake(45.84, 10)];
+    [halfCircle closePath];
+    [halfCircle moveToPoint:CGPointMake(45.84, 10)];
+    CGContextSaveGState(context);
+    CGContextTranslateCTM(context, 12.08, 0);
+    halfCircle.usesEvenOddFillRule = YES;
+    [[UIColor colorWithWhite:0.094 alpha:1] setFill];
+    [halfCircle fill];
+    CGContextSaveGState(context);
+    halfCircle.lineWidth = 2;
+    CGContextBeginPath(context);
+    CGContextAddPath(context, halfCircle.CGPath);
+    CGContextEOClip(context);
+    [[UIColor colorWithWhite:0.122 alpha:1] setStroke];
+    [halfCircle stroke];
+    CGContextRestoreGState(context);
+    CGContextRestoreGState(context);
+    
+    //! mask
+    UIBezierPath *mask = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 70, 5)];
+    CGContextSaveGState(context);
+    CGContextTranslateCTM(context, 0, 9);
+    [[UIColor colorWithWhite:0.094 alpha:1] setFill];
+    [mask fill];
+    CGContextRestoreGState(context);
+    
+    CGContextRestoreGState(context);
+  }
+  
+  CGContextRestoreGState(context);
+}
+
+
+#pragma mark - Canvas Images
+
+//! Page 1
+
++ (UIImage *)imageOfHalfCircle {
+  static UIImage * image = nil;
+  if (image != nil)
+    return image;
+  
+  UIGraphicsBeginImageContextWithOptions(CGSizeMake(70, 14), NO, 0);
+  [Icons drawHalfCircle];
+  image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return image;
+}
+
+
 @end

@@ -21,6 +21,7 @@
 @property (nonatomic)         UIOffset      badgePositionAdjustment;
 @property (nonatomic)         UIFont*       badgeTextFont;
 
+
 @property (nonatomic, strong)         SMGTabSubMenu*       subMenu;
 
 - (UIImage *)finishedSelectedImage;

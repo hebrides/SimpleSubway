@@ -12,6 +12,10 @@
 @property (nonatomic) CGFloat itemWidth;
 @property (nonatomic) UIView *backgroundView;
 
+
+
+
+
 @end
 
 @implementation SMGTabBar
@@ -39,7 +43,6 @@
 - (void)commonInitialization {
     _backgroundView = [[UIView alloc] init];
     [self addSubview:_backgroundView];
-    
     [self setTranslucent:NO];
 }
 
@@ -71,7 +74,10 @@
         
         index++;
     }
+  
 }
+
+
 
 #pragma mark - Configuration
 
@@ -102,6 +108,7 @@
         [self addSubview:item];
     }
 }
+
 
 - (void)setHeight:(CGFloat)height {
     [self setFrame:CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame),

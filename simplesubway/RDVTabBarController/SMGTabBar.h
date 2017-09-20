@@ -25,6 +25,7 @@
 @property                         UIEdgeInsets                 contentEdgeInsets;
 @property (nonatomic, getter=isTranslucent) BOOL               translucent;
 
+
 - (void)setHeight:(CGFloat)height;
 - (CGFloat)minimumContentHeight; // Returns the minimum height of tab bar's items.
 

@@ -18,8 +18,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIColor* menuBG = GRAY_DARK;
-        UIColor* menuText = WHITE;
+      UIColor* menuBG = SUBMENU_BACKGROUND_COLOR;
+        UIColor* menuText = SUBMENU_TEXT_COLOR;
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         self.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
         self.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:14.0];
@@ -36,7 +36,7 @@
         // -----------------------------------------------------------------------------
         
         CGSize bgColorRect = CGSizeMake(frame.size.width, frame.size.height);
-        UIColor *bgColor = BRAND_COLOR_ORANGE;
+        UIColor *bgColor = SUBMENU_TOUCH_COLOR;
         UIGraphicsBeginImageContext(bgColorRect);
         
         CGContextRef context = UIGraphicsGetCurrentContext();

@@ -17901,7 +17901,7 @@
 				GCC_PREFIX_HEADER = "SimpleSubway/SimpleSubway-Prefix.pch";
 				INFOPLIST_FILE = "SimpleSubway/SimpleSubway-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.simple.sub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.simplesubway2;
 				PRODUCT_NAME = SimpleSubway;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -17921,7 +17921,7 @@
 				GCC_PREFIX_HEADER = "SimpleSubway/SimpleSubway-Prefix.pch";
 				INFOPLIST_FILE = "SimpleSubway/SimpleSubway-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.simple.sub;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.simplesubway2;
 				PRODUCT_NAME = SimpleSubway;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

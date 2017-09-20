@@ -28,6 +28,7 @@
     _title = title;
     _tabNumber = tabNumber;
     _menuOpen = NO;
+    _animating = NO;
     [self setUpSubMenu];
   } else {
 
@@ -55,10 +56,16 @@
   float menuHeight = numberOfMenuItems * menuItemHeight;
   float menuWidth = SCREEN_WIDTH;
   
-  // Place menu at bottom of screen, under the tab bar
-  self.frame = CGRectMake(0,SCREEN_HEIGHT-TABBARHEIGHT, menuWidth, menuHeight);
-  self.backgroundColor =  GRAY_DARK;
+  // Place menu at bottom of screen -- for under the tab bar, use: SCREEN_HEIGHT-TABBARHEIGHT, and see next animateMenu
+  self.frame = CGRectMake(0,SCREEN_HEIGHT, menuWidth, menuHeight);
+  self.backgroundColor =  SUBMENU_BACKGROUND_COLOR;
   
+  // Make SubMenu Top Line
+  UIView *topline = [[UIView alloc] initWithFrame: CGRectMake(0, -SUBMENU_LINE_SIZE, SCREEN_WIDTH, SUBMENU_LINE_SIZE)];
+  topline.backgroundColor = SUBMENU_LINE_COLOR;
+  topline.alpha =.5f;
+  [self addSubview: topline];
+
   // Create menu items
 
   float menuTitleHeight = 0;
@@ -78,10 +85,22 @@
   for (int i=0; i< numberOfMenuItems; i++) {
     NSString * itemName = [NSString stringWithFormat:@"   %@", [(SMGScrollView *)[_subMenuViews objectAtIndex:i] title]];
     SMGButton* nthButton = [[SMGButton alloc] initWithFrame:CGRectMake(0.0, menuTitleHeight+(menuItemHeight*i), menuItemWidth, menuItemHeight) tag:i title:itemName ];
+    
+    //
+    // Make Item Separator
+    // -------------------
+    UIView *lineSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, -SUBMENU_DIVIDER_SIZE, SCREENFRAME.size.width, SUBMENU_DIVIDER_SIZE)];
+    lineSeparator.alpha =.5f;
+    lineSeparator.backgroundColor = SUBMENU_DIVIDER_COLOR;
+    [nthButton addSubview:lineSeparator];
+
+    
+    
     // Add buttons to menu
     [nthButton addTarget:self
                   action:@selector(subMenuItemSelected:)
      forControlEvents:UIControlEventTouchUpInside];
+    
     [self addSubview: nthButton];
   }
   
@@ -95,7 +114,7 @@
   if ([[self delegate] respondsToSelector:@selector(tabSubMenu:didSelectSubMenuItem:)]) {
     [[self delegate] tabSubMenu:self didSelectSubMenuItem:sender.tag ];
   }
-  
+
 }
 
 #pragma mark - Animations
@@ -106,18 +125,24 @@
   NSLog(@"### menu Y = %f ###",self.frame.origin.y);
 #endif
   
-  // get current frame, check if menu open, assign open and closed menu offsets
-  CGFloat menuOffsetY = (self.menuOpen)? self.frame.size.height : -self.frame.size.height;
+  if (_animating) return;
+
+  _animating = YES;
+  
+  // get current frame, check if menu open, assign open and closed menu offsets // remove TABBARHEIGHT for non-hiding tabBar
+  CGFloat menuOffsetY = (self.menuOpen)? self.frame.size.height + TABBARHEIGHT: -self.frame.size.height - TABBARHEIGHT;
   CGFloat newAlpha = (self.menuOpen)? 0.0 : 1.0; //1.0 : 1.0;
-  
   [self setHidden:NO];
-  
+
+
   [UIView animateWithDuration:0.25 animations:^{
     self.frame = CGRectOffset(self.frame, 0, menuOffsetY);
     self.alpha =  newAlpha;
   } completion:^(BOOL finished) {
     self.menuOpen = !self.menuOpen;
+    _animating = NO;
   }];
+  
 }
 
 
