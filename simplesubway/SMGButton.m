@@ -36,16 +36,27 @@
         // -----------------------------------------------------------------------------
         
         CGSize bgColorRect = CGSizeMake(frame.size.width, frame.size.height);
-        UIColor *bgColor = SUBMENU_TOUCH_COLOR;
+//      UIColor *bgColor = SUBMENU_TOUCH_COLOR; // Uncomment for solid fill
         UIGraphicsBeginImageContext(bgColorRect);
-        
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(context, bgColor.CGColor);
-        CGContextFillRect(context, (CGRect){.size = bgColorRect});
-        
+//      CGContextRef context = UIGraphicsGetCurrentContext();
+//      CGContextSetFillColorWithColor(context, bgColor.CGColor); // Uncomment for solid fill
+//      CGContextFillRect(context, (CGRect){.size = bgColorRect}); // Uncomment for solid fill
+    
+        // Gradient Fill
+        CAGradientLayer* gradientLayer = [CAGradientLayer layer];
+        gradientLayer.startPoint = CGPointMake(0.5, 0);
+        gradientLayer.endPoint = CGPointMake(0.5,1);
+        gradientLayer.frame = (CGRect){.size = bgColorRect};
+        gradientLayer.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[SUBMENU_TOUCH_COLOR CGColor], nil];
+        [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+        // Comment out above code for solid fill
+
         UIImage *bgColorImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         [self setBackgroundImage:bgColorImage forState:UIControlStateHighlighted];
+      
+      
+    
     
         /*
         //set the shadow on the view's layer
