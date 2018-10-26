@@ -158,7 +158,7 @@
   NSArray* controllers = [NSArray arrayWithObjects: self.bikeMapVC, self.busMapVC, self.subwayMapVC, self.mapKitMapVC, self.appInfoVC, nil];
   
   
-  // Note: Not really clear BUT this makes the tabBarController create correct number of Tab Bar items, so we can then set up the Tab Bar items in the and their SubMenus next step
+  // Note: Not really clear BUT this makes the tabBarController create correct number of Tab Bar items, so we can then set up the Tab Bar items and SubMenus in the next step
   
   self.tabBarController.viewControllers = controllers;
   
