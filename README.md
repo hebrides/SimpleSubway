@@ -3,7 +3,7 @@ SimpleSubway
 
 *Note: In this branch I hacked a long press to open submenus into the Cocoa Pod RDVTabBarController and 
 experimented with PaintCode icons. This project 
-is at the 'mediocre enough' for now and I'm moving on to work on other ideas. Lots of concepts and code here 
+is at the 'mediocre enough' level for now and I'm moving on to work on other ideas. Lots of concepts and code here 
 modified and snipped from Apple's documentation and [Ray Wenderlich's awesome 
 site](http://www.raywenderlich.com/). It was fun learning with this project! Maybe a few more design tweeks and 
 I'll republish. *(Below 
