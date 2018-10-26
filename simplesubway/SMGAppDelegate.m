@@ -287,8 +287,8 @@
   self.appInfoView.delegate = self;
   self.appInfoView.scrollView.bounces = NO;
   
-  // not how to do this, instead see: https://stackoverflow.com/questions/4734682/how-to-detect-touch-on-uiwebview
-  //  UITapGestureRecognizer *oneFingerTapRecognizer = [[UITapGestureRecognizer alloc]
+//  The below is not the best way to register a tap on a webview, instead it seems https://stackoverflow.com/questions/4734682/how-to-detect-touch-on-uiwebview
+//  UITapGestureRecognizer *oneFingerTapRecognizer = [[UITapGestureRecognizer alloc]
 //                                                    initWithTarget:self.appInfoView
 //                                                    action:@selector(appInfoViewTapped:)];
 //  oneFingerTapRecognizer.numberOfTapsRequired = 1;
