@@ -3006,10 +3006,11 @@
 		61510DD11F5B6D64004ADCD3 /* bg-lt.png in Resources */ = {isa = PBXBuildFile; fileRef = 61510DCE1F5B6D64004ADCD3 /* bg-lt.png */; };
 		61510DD21F5B6D64004ADCD3 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 61510DCF1F5B6D64004ADCD3 /* bg.png */; };
 		61510DD41F5B84B9004ADCD3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61510DD31F5B84B9004ADCD3 /* Media.xcassets */; };
+		617A7368218503D600322770 /* app-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 617A7367218503D600322770 /* app-icon.png */; };
+		617A736A2185068C00322770 /* brand.png in Resources */ = {isa = PBXBuildFile; fileRef = 617A73692185068C00322770 /* brand.png */; };
+		617A736C21850A6400322770 /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = 617A736B21850A6400322770 /* normalize.css */; };
 		617AFD281971592A000E439C /* SMGMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 617AFD271971592A000E439C /* SMGMapAnnotation.m */; };
 		617FEB631E48576800357127 /* Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 617FEB621E48576800357127 /* Icons.m */; };
-		618AFF9D1FB403D00012E646 /* subway_blue.svg in Resources */ = {isa = PBXBuildFile; fileRef = 618AFF9C1FB403CF0012E646 /* subway_blue.svg */; };
-		618AFF9F1FB406FC0012E646 /* subway_blue_circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = 618AFF9E1FB406FC0012E646 /* subway_blue_circle.svg */; };
 		619804331E4D873B008DD5D5 /* 2016Bike1_Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6198042D1E4D873A008DD5D5 /* 2016Bike1_Placeholder.png */; };
 		619804341E4D873B008DD5D5 /* 2017BusBk_Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6198042E1E4D873B008DD5D5 /* 2017BusBk_Placeholder.png */; };
 		619804351E4D873B008DD5D5 /* 2017BusBx_Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6198042F1E4D873B008DD5D5 /* 2017BusBx_Placeholder.png */; };
@@ -7376,12 +7377,13 @@
 		61510DCE1F5B6D64004ADCD3 /* bg-lt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-lt.png"; path = "simplesubway/bg-lt.png"; sourceTree = "<group>"; };
 		61510DCF1F5B6D64004ADCD3 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = simplesubway/bg.png; sourceTree = "<group>"; };
 		61510DD31F5B84B9004ADCD3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		617A7367218503D600322770 /* app-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon.png"; sourceTree = "<group>"; };
+		617A73692185068C00322770 /* brand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brand.png; sourceTree = "<group>"; };
+		617A736B21850A6400322770 /* normalize.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = normalize.css; path = simplesubway/normalize.css; sourceTree = SOURCE_ROOT; };
 		617AFD261971592A000E439C /* SMGMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMGMapAnnotation.h; path = simplesubway/SMGMapAnnotation.h; sourceTree = SOURCE_ROOT; };
 		617AFD271971592A000E439C /* SMGMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMGMapAnnotation.m; path = simplesubway/SMGMapAnnotation.m; sourceTree = SOURCE_ROOT; };
 		617FEB611E48576800357127 /* Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Icons.h; path = ../simplesubway/Icons.h; sourceTree = "<group>"; };
 		617FEB621E48576800357127 /* Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Icons.m; path = ../simplesubway/Icons.m; sourceTree = "<group>"; };
-		618AFF9C1FB403CF0012E646 /* subway_blue.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = subway_blue.svg; path = simplesubway/subway_blue.svg; sourceTree = "<group>"; };
-		618AFF9E1FB406FC0012E646 /* subway_blue_circle.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = subway_blue_circle.svg; path = simplesubway/subway_blue_circle.svg; sourceTree = "<group>"; };
 		6198042D1E4D873A008DD5D5 /* 2016Bike1_Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2016Bike1_Placeholder.png; sourceTree = "<group>"; };
 		6198042E1E4D873B008DD5D5 /* 2017BusBk_Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2017BusBk_Placeholder.png; sourceTree = "<group>"; };
 		6198042F1E4D873B008DD5D5 /* 2017BusBx_Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2017BusBx_Placeholder.png; sourceTree = "<group>"; };
@@ -13193,6 +13195,7 @@
 			isa = PBXGroup;
 			children = (
 				D2B80B3118A7C1CA00575654 /* app_info.html */,
+				617A736B21850A6400322770 /* normalize.css */,
 				D2B80B3218A7C1CA00575654 /* smg.css */,
 			);
 			name = html;
@@ -13201,8 +13204,8 @@
 		D2B80B3618A82E1700575654 /* Identity */ = {
 			isa = PBXGroup;
 			children = (
-				618AFF9E1FB406FC0012E646 /* subway_blue_circle.svg */,
-				618AFF9C1FB403CF0012E646 /* subway_blue.svg */,
+				617A73692185068C00322770 /* brand.png */,
+				617A7367218503D600322770 /* app-icon.png */,
 			);
 			name = Identity;
 			sourceTree = "<group>";
@@ -13787,6 +13790,7 @@
 				619812D81E4ED0E0008DD5D5 /* 2017BusSI_500_5_8.png in Resources */,
 				613111751E4BF624003A883E /* 2016Bike1_1000_7_28.png in Resources */,
 				61310C071E4BF094003A883E /* 2017BusBx_1000_9_8.png in Resources */,
+				617A7368218503D600322770 /* app-icon.png in Resources */,
 				619809691E4DCE26008DD5D5 /* 2016Bike2_250_1_3.png in Resources */,
 				613114F91E4D71BF003A883E /* 2017BusMan_250_2_6.png in Resources */,
 				619812941E4ED0DF008DD5D5 /* 2017BusSI_250_4_2.png in Resources */,
@@ -14489,7 +14493,6 @@
 				61310C5E1E4BF094003A883E /* 2017BusBx_500_4_10.png in Resources */,
 				6131038A1E4BCEEE003A883E /* 2017BusQ_500_6_5.png in Resources */,
 				613107F81E4BEA3A003A883E /* 2017BusBk_500_5_7.png in Resources */,
-				618AFF9D1FB403D00012E646 /* subway_blue.svg in Resources */,
 				613110B01E4BF623003A883E /* 2016Bike1_1000_18_8.png in Resources */,
 				619812E91E4ED0E0008DD5D5 /* 2017BusSI_500_7_3.png in Resources */,
 				6131FC7B1E4BAE3A003A883E /* 2017Sub_1000_3_6.png in Resources */,
@@ -14637,7 +14640,6 @@
 				619809FA1E4DCE27008DD5D5 /* 2016Bike2_500_7_6.png in Resources */,
 				61310AC81E4BF092003A883E /* 2017BusBx_1000_13_4.png in Resources */,
 				613106D91E4BEA39003A883E /* 2017BusBk_1000_1_12.png in Resources */,
-				618AFF9F1FB406FC0012E646 /* subway_blue_circle.svg in Resources */,
 				613110E61E4BF623003A883E /* 2016Bike1_1000_2_4.png in Resources */,
 				619809A61E4DCE26008DD5D5 /* 2016Bike2_500_2_10.png in Resources */,
 				6131103F1E4BF623003A883E /* 2016Bike1_1000_15_1.png in Resources */,
@@ -15254,6 +15256,7 @@
 				61310C021E4BF094003A883E /* 2017BusBx_1000_9_3.png in Resources */,
 				6131067C1E4BEA38003A883E /* 2017BusBk_1000_15_5.png in Resources */,
 				613110691E4BF623003A883E /* 2016Bike1_1000_16_21.png in Resources */,
+				617A736A2185068C00322770 /* brand.png in Resources */,
 				613103101E4BCEED003A883E /* 2017BusQ_1000_9_19.png in Resources */,
 				619807D21E4DCE23008DD5D5 /* 2016Bike2_1000_14_3.png in Resources */,
 				61310B7C1E4BF093003A883E /* 2017BusBx_1000_3_14.png in Resources */,
@@ -17499,6 +17502,7 @@
 				619808F61E4DCE25008DD5D5 /* 2016Bike2_1000_6_5.png in Resources */,
 				6131028C1E4BCEED003A883E /* 2017BusQ_1000_3_19.png in Resources */,
 				6131017F1E4BCEEC003A883E /* 2017BusQ_1000_10_14.png in Resources */,
+				617A736C21850A6400322770 /* normalize.css in Resources */,
 				613106701E4BEA38003A883E /* 2017BusBk_1000_15_12.png in Resources */,
 				619809A31E4DCE26008DD5D5 /* 2016Bike2_500_1_9.png in Resources */,
 				613111111E4BF624003A883E /* 2016Bike1_1000_4_16.png in Resources */,

@@ -36,20 +36,20 @@
         // -----------------------------------------------------------------------------
         
         CGSize bgColorRect = CGSizeMake(frame.size.width, frame.size.height);
-//      UIColor *bgColor = SUBMENU_TOUCH_COLOR; // Uncomment for solid fill
+      UIColor *bgColor = SUBMENU_TOUCH_COLOR; // Comment out for no solid fill / gradient fill
         UIGraphicsBeginImageContext(bgColorRect);
-//      CGContextRef context = UIGraphicsGetCurrentContext();
-//      CGContextSetFillColorWithColor(context, bgColor.CGColor); // Uncomment for solid fill
-//      CGContextFillRect(context, (CGRect){.size = bgColorRect}); // Uncomment for solid fill
+      CGContextRef context = UIGraphicsGetCurrentContext();  // Comment out for no solid fill / gradient fill
+      CGContextSetFillColorWithColor(context, bgColor.CGColor); // Comment out for no solid fill / gradient fill
+      CGContextFillRect(context, (CGRect){.size = bgColorRect}); // Comment out for no solid fill / gradient fill
     
         // Gradient Fill
-        CAGradientLayer* gradientLayer = [CAGradientLayer layer];
-        gradientLayer.startPoint = CGPointMake(0.5, 0);
-        gradientLayer.endPoint = CGPointMake(0.5,1);
-        gradientLayer.frame = (CGRect){.size = bgColorRect};
-        gradientLayer.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[SUBMENU_TOUCH_COLOR CGColor], nil];
-        [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
-        // Comment out above code for solid fill
+//        CAGradientLayer* gradientLayer = [CAGradientLayer layer];
+//        gradientLayer.startPoint = CGPointMake(0.5, 0);
+//        gradientLayer.endPoint = CGPointMake(0.5,1);
+//        gradientLayer.frame = (CGRect){.size = bgColorRect};
+//        gradientLayer.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[SUBMENU_TOUCH_COLOR CGColor], nil];
+//        [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+        // Uncomment above code for gradient fill
 
         UIImage *bgColorImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
