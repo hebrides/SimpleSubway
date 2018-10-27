@@ -158,7 +158,7 @@
   NSArray* controllers = [NSArray arrayWithObjects: self.bikeMapVC, self.busMapVC, self.subwayMapVC, self.mapKitMapVC, self.appInfoVC, nil];
   
   
-  // Note: Not really clear BUT this makes the tabBarController create correct number of Tab Bar items, so we can then set up the Tab Bar items in the and their SubMenus next step
+  // Note: Not really clear BUT this makes the tabBarController create correct number of Tab Bar items, so we can then set up the Tab Bar items and SubMenus in the next step
   
   self.tabBarController.viewControllers = controllers;
   
@@ -287,8 +287,8 @@
   self.appInfoView.delegate = self;
   self.appInfoView.scrollView.bounces = NO;
   
-  // not how to do this, instead see: https://stackoverflow.com/questions/4734682/how-to-detect-touch-on-uiwebview
-  //  UITapGestureRecognizer *oneFingerTapRecognizer = [[UITapGestureRecognizer alloc]
+//  The below is not the best way to register a tap on a webview, instead it seems https://stackoverflow.com/questions/4734682/how-to-detect-touch-on-uiwebview
+//  UITapGestureRecognizer *oneFingerTapRecognizer = [[UITapGestureRecognizer alloc]
 //                                                    initWithTarget:self.appInfoView
 //                                                    action:@selector(appInfoViewTapped:)];
 //  oneFingerTapRecognizer.numberOfTapsRequired = 1;
