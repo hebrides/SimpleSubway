@@ -3,7 +3,7 @@
 //  simplesubway
 //
 //  Created by Marcus Skye Lewis on 2/11/17.
-//  Copyright © 2017 Bolt Action. All rights reserved.
+//  Copyright © 2017 Skye. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -22,8 +22,9 @@
 @property (nonatomic)                   NSInteger              tabNumber;
 @property (nonatomic)                   BOOL                   menuOpen;
 @property (nonatomic)                   BOOL                   animating;
+@property (nonatomic)                   float                  tabBarHeight;
 
-- (id)initWithSubMenuViews:(NSArray*)itemNames title:(NSString*)title tabNumber:(NSInteger)tabNumber;
+- (id)initWithSubMenuViews:(NSArray*)itemNames title:(NSString*)title tabNumber:(NSInteger)tabNumber tabBarHeight:(float)tabBarHeight;
 
 - (void)animateMenu;
 

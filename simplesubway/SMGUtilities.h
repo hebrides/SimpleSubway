@@ -2,8 +2,8 @@
 //  SMGUtilities.h
 //  SimpleSubway
 //
-//  Created by Bolt Action on 2/8/14.
-//  Copyright (c) 2017 Bolt Action. All rights reserved.
+//  Created by Skye on 2/8/14.
+//  Copyright (c) 2019 Skye. All rights reserved.
 //
 
 
@@ -30,11 +30,11 @@
 #define GRAY_VERY_DARK [UIColor colorWithRed:13/255.0f green:13/255.0f blue:13/255.0f alpha:1.0f]
 
 #define WHITE [UIColor whiteColor]
-#define WHITE_TRANS [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.5f]
+#define WHITE_TRANS [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.90f]
 #define BLACK [UIColor blackColor]
 
 
-#define VIEW_BACKGROUND_COLOR WHITE
+#define VIEWS_BACKGROUND_COLOR [UIColor colorWithPatternImage:[SMGUtilities imageWithName:@"bg-paper-tile.png" Size:SCREENFRAME.size]]
 
 #define TAB_BAR_COLOR WHITE
 #define TAB_BAR_LINE_COLOR GRAY_VERY_LIGHT
@@ -51,9 +51,9 @@
 #define SUBMENU_LINE_COLOR GRAY
 #define SUBMENU_TEXT_COLOR GRAY
 
-#define STATUS_BAR_COLOR GRAY_DARK
-#define STATUS_BAR_LINE_SIZE 1.0f
-#define STATUS_BAR_LINE_COLOR GRAY
+#define STATUS_BAR_COLOR WHITE
+#define STATUS_BAR_LINE_SIZE .5f
+#define STATUS_BAR_LINE_COLOR GRAY_VERY_LIGHT
 
 //[UIColor clearColor]
 

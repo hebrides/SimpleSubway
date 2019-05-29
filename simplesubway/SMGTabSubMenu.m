@@ -3,7 +3,7 @@
 //  simplesubway
 //
 //  Created by Marcus Skye Lewis on 2/11/17.
-//  Copyright © 2017 Bolt Action. All rights reserved.
+//  Copyright © 2017 Skye. All rights reserved.
 //
 
 #import "SMGTabSubMenu.h"
@@ -21,7 +21,7 @@
 @implementation SMGTabSubMenu
 
 
-- (id)initWithSubMenuViews:(NSArray*)subMenuViews title:(NSString*)title tabNumber:(NSInteger)tabNumber {
+- (id)initWithSubMenuViews:(NSArray*)subMenuViews title:(NSString*)title tabNumber:(NSInteger)tabNumber tabBarHeight:(float)tabBarHeight {
 
   if (self = [super init]) {
     _subMenuViews = subMenuViews;
@@ -29,6 +29,7 @@
     _tabNumber = tabNumber;
     _menuOpen = NO;
     _animating = NO;
+    _tabBarHeight = tabBarHeight;
     [self setUpSubMenu];
   } else {
 
@@ -51,7 +52,9 @@
  
   // Create the container for the menu
   NSInteger numberOfMenuItems = [_subMenuViews count];
-  float menuItemHeight = TABBARHEIGHT;
+  
+  
+  float menuItemHeight = _tabBarHeight*0.9f;
   float menuItemWidth = SCREEN_WIDTH;
   float menuHeight = numberOfMenuItems * menuItemHeight;
   float menuWidth = SCREEN_WIDTH;
@@ -73,7 +76,7 @@
   // Create a title bar if asked -- this needs work
   if (_title) {
     menuTitleHeight = menuItemHeight/2;
-    self.frame = CGRectMake(0,SCREEN_HEIGHT-TABBARHEIGHT, menuWidth, menuHeight + menuTitleHeight);
+    self.frame = CGRectMake(0,SCREEN_HEIGHT-_tabBarHeight, menuWidth, menuHeight + menuTitleHeight);
     UILabel * menuTitle = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, menuItemWidth, menuTitleHeight)];
     menuTitle.font = [UIFont fontWithName:@"Trebuchet MS" size:14.0];
     menuTitle.text = _title;
@@ -130,7 +133,7 @@
   _animating = YES;
   
   // get current frame, check if menu open, assign open and closed menu offsets // remove TABBARHEIGHT for non-hiding tabBar
-  CGFloat menuOffsetY = (self.menuOpen)? self.frame.size.height + TABBARHEIGHT: -self.frame.size.height - TABBARHEIGHT;
+  CGFloat menuOffsetY = (self.menuOpen)? self.frame.size.height + _tabBarHeight: -self.frame.size.height - _tabBarHeight;
   CGFloat newAlpha = (self.menuOpen)? 0.0 : 1.0; //1.0 : 1.0;
   [self setHidden:NO];
 

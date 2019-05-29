@@ -33,7 +33,6 @@
     self.imageSize = imageSize;
     self.imageName = imageName;
     self.zoomScale = 1.0;
-    self.backgroundColor = [UIColor clearColor];//VIEW_BACKGROUND_COLOR;
     self.hidden = true;
     
     
@@ -42,6 +41,15 @@
     UIImage* placeHolderImage = [UIImage imageNamed: [NSString stringWithFormat:@"%@_Placeholder", self.imageName]];
     
     [self.imageView setImage: placeHolderImage];
+
+    self.imageView.layer.borderWidth = 2.0f;
+    self.imageView.layer.borderColor= [GRAY_LIGHT CGColor];
+//    self.imageView.layer.shadowColor = [GRAY CGColor];
+//    self.imageView.layer.shadowRadius = 30.0f;
+//    self.imageView.layer.shadowOpacity = .2f;
+//    self.imageView.layer.shadowOffset = CGSizeZero;
+//    self.imageView.layer.masksToBounds = NO;
+
     
     // Add tiling view
     self.tilingView = [[TilingView alloc] initWithImageName:self.imageName size:self.imageSize];

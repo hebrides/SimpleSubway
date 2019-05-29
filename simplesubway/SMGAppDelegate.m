@@ -2,8 +2,8 @@
 //  SMGAppDelegate.m
 //  NYC Subway Map
 //
-//  Created by Bolt Action on 12/17/13.
-//  Copyright (c) 2017 Bolt Action. All rights reserved.
+//  Created by Skye on 12/17/13.
+//  Copyright (c) 2019 Skye. All rights reserved.
 //
 
 #import "SMGAppDelegate.h"
@@ -11,6 +11,7 @@
 #import "SMGUtilities.h"
 #import "SMGViewController.h"
 #import "Icons.h"
+#import <sys/utsname.h>
 
 // #import "SMGMapAnnotation.h"
 
@@ -60,14 +61,19 @@
 #ifdef DEBUG
   NSLog(@"Debug Mode!");
 #endif
-  
-  
+    
+  //
+  // Initialize Main Window
+  // ----------------------
+  self.window = [[UIWindow alloc] initWithFrame: SCREENFRAME];
+  self.window.backgroundColor = VIEWS_BACKGROUND_COLOR;
+
   //
   // Set App Styles
   // --------------
   
-  // Set color status bar text information -- carrier, time, battery text (white)
-  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  // Set color status bar text information -- carrier, time, battery text (dark)
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
   
   //
   // Initialize SMG Tab Bar Controller
@@ -75,13 +81,17 @@
   [self makeTabBarController];
   
   //
-  // Construct Frame for main views that is below status bar, above tab bar
-  // ----------------------------------------------------------------------
-  
-//  self.mainViewFrame = CGRectMake(0, STATUS_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT - TABBARHEIGHT);
-  
-  self.mainViewFrame = CGRectMake(0, STATUS_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT);
+  // Construct Frame for main views
+  // ------------------------------
 
+  // Below status bar, above tab bar
+//   self.mainViewFrame = CGRectMake(0, STATUS_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT - TABBARHEIGHT);
+
+  // Just below status bar
+//  self.mainViewFrame = CGRectMake(0, STATUS_BAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - STATUS_BAR_HEIGHT);
+
+  // Full screen
+  self.mainViewFrame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
   
   //
   // Initialize ScrollViews for Map Images
@@ -104,50 +114,97 @@
   [self.tabBarController setSelectedIndex:2];
   
   //
-  // Initialize Main Window
-  // ----------------------
-  self.window = [[UIWindow alloc] initWithFrame: SCREENFRAME];
+  // Create a colored status bar for all phones except
+  // iPhone X and above (notched) 4 and below
+  // ----------------------------------------
+  [self setStatusBar];
   
   //
   // Configure Main Window
   // ---------------------
   [self.window setRootViewController:self.tabBarController];
   [self.window makeKeyAndVisible];
-  
-  //
-  // Create a colored status bar
-  // ---------------------------
-  [self setStatusBar];
-  [self setStatusBarLine];
+
   
   return YES;
 }
 
 - (void) setStatusBar {
-  
-  if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) { // Determine iOS7+
+   // Draw status bar for iPhones 5,6,7 & 8 only
+#ifdef DEBUG
+  NSLog(@"Has Notch, %i", [self hasTopNotch]);
+#endif
+   if(
+     [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 // > 4
+      && ![self hasTopNotch] // < X
+     ) {
+    // Bar
     self.statusBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, STATUS_BAR_HEIGHT)];
     self.statusBarView.backgroundColor = STATUS_BAR_COLOR;
     [self.tabBarController.view addSubview: self.statusBarView];
-  }
-}
-
-- (void) setStatusBarLine {
-  
-  if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) { // Determine iOS7+
+    // Line
     UIView* statusBarLineView = [[UIView alloc] initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT, SCREEN_WIDTH, STATUS_BAR_LINE_SIZE)];
     statusBarLineView.backgroundColor = STATUS_BAR_LINE_COLOR;
     [self.tabBarController.view addSubview: statusBarLineView];
   }
-  
 }
+
+NSString* getDeviceModel(void)
+{
+  static dispatch_once_t onceToken;
+  static NSString *strModelID = nil;
+  dispatch_once(&onceToken, ^{
+#if TARGET_IPHONE_SIMULATOR
+    strModelID = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
+#else
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    strModelID = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+#endif
+  });
+  return strModelID;
+}
+
+// See the `Hardware strings` in https://en.wikipedia.org/wiki/List_of_iOS_devices
+BOOL isIPhoneX(void)
+{
+  NSString *strModelID = getDeviceModel();
+  return [strModelID isEqualToString:@"iPhone10,3"] || [strModelID isEqualToString:@"iPhone10,6"];
+}
+
+BOOL hasTopNotch (void)
+{
+  NSString *strModelID = getDeviceModel();
+  return [strModelID isEqualToString:@"iPhone10,3"] || [strModelID isEqualToString:@"iPhone10,6"] || // iPhone X
+  [strModelID isEqualToString:@"iPhone11,2"] || [strModelID isEqualToString:@"iPhone11,4"] || [strModelID isEqualToString:@"iPhone11,6"] || // iPhone XS (Max)
+  [strModelID isEqualToString:@"iPhone11,8"]; // iPhone XR
+}
+
+- (BOOL)hasTopNotch {
+  if (@available(iOS 11.0, *)) {
+    return [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.top > 20.0;
+  }
+  return  NO;
+}
+
 
 - (void) makeTabBarController {
   
   self.tabBarController = [[SMGTabBarController alloc] init];
   self.tabBarController.delegate = self; // Handle tab bar here in App Delegate
-  [self.tabBarController.tabBar setHeight: TABBARHEIGHT];
+
+#ifdef DEBUG
+  NSLog(@"Has Notch, %i", [self hasTopNotch]);
+#endif
+  
+  if ([self hasTopNotch]) {
+    [self.tabBarController.tabBar setHeight: 70.0f];
+  } else  {
+    [self.tabBarController.tabBar setHeight: TABBARHEIGHT];
+  }
   self.tabBarController.tabBar.backgroundView.backgroundColor = TAB_BAR_COLOR;
+  
+//  self.tabBarController.view.backgroundColor = TAB_BAR_COLOR;
   
 }
 
@@ -169,9 +226,10 @@
   
   NSArray* busMapViews = [NSArray arrayWithObjects: self.busManhattanView, self.busBronxView, self.busBrooklynView, self.busQueensView, self.busStatenIslandView, nil];
   [self.tabBarController setSubMenuViews:busMapViews forTabBarItemAtIndex:1];
-  
-  // NSArray* subwayMapViews = [NSArray arrayWithObjects:self.subwayMapView, self.subwayMapNightView, nil];
-  
+
+  // Uncomment after adding subway night map
+//  NSArray* subwayMapViews = [NSArray arrayWithObjects:self.subwayMapView, self.subwayMapNightView, nil];
+//  [self.tabBarController setSubMenuViews:subwayMapViews forTabBarItemAtIndex:2];
   
   
   // Setup Tab Bar items
@@ -190,6 +248,14 @@
                            [Icons imageOfInfoFilled],
                            nil];
 
+
+  UIOffset titlePositionAdjustment = UIOffsetMake(0.0f, 0.0f);
+  UIOffset imagePositionAdjustment = UIOffsetMake(0.0f, 0.0f);
+  if ([self hasTopNotch]) { // If iPhone X
+    // Nudge up tab bar items
+    titlePositionAdjustment = UIOffsetMake(0, -2.0f);
+    imagePositionAdjustment = UIOffsetMake(0, -8.0f);
+  }
   
   NSInteger count = 0;
   for (SMGTabBarItem *item in self.tabBarController.tabBar.items) {
@@ -203,8 +269,12 @@
     [item setSelectedTitleAttributes:selectedTextAttributes];
     [item setTitlePositionAdjustment:UIOffsetMake(0, 3.5)];
   // Not needed  [item setTitle:((SMGViewController*)[controllers objectAtIndex:count]).title];
+    item.imagePositionAdjustment = imagePositionAdjustment;
+    item.titlePositionAdjustment = titlePositionAdjustment;
     count++;
   }
+  
+
 
   // Make TabBar Line
   UIView *lineAboveTabBar = [[UIView alloc] initWithFrame: CGRectMake(0, -TAB_BAR_LINE_SIZE, SCREEN_WIDTH, TAB_BAR_LINE_SIZE)];
@@ -230,9 +300,9 @@
   self.subwayMapView = [[SMGScrollView alloc] initWithTitle:@"DAY" index:0 frame:self.mainViewFrame  imageName:@"2017Sub" imageSize:CGSizeMake(2560.0, 3072.0)];
   [self.subwayMapView setContentOffset:CGPointMake(0, 0) animated:YES];
 
-  
-  self.subwayMapNightView = [[SMGScrollView alloc] initWithTitle:@"NIGHT" index:1 frame:self.mainViewFrame imageName:@"2017SubNight" imageSize:CGSizeMake(2560.0, 3072.0)];
-  [self.subwayMapNightView setContentOffset:CGPointMake(0, 0) animated:YES];
+    // Uncomment after subway night map added
+//  self.subwayMapNightView = [[SMGScrollView alloc] initWithTitle:@"NIGHT" index:1 frame:self.mainViewFrame imageName:@"2017SubNight" imageSize:CGSizeMake(2560.0, 3072.0)];
+//  [self.subwayMapNightView setContentOffset:CGPointMake(0, 0) animated:YES];
   
   //
   // Bike Map Views
@@ -252,7 +322,9 @@
   self.busBronxView = [[SMGScrollView alloc] initWithTitle:@"THE BRONX" index:3 frame:self.mainViewFrame imageName:@"2017BusBx" imageSize:CGSizeMake(5120.0, 5376.0)];
   self.busStatenIslandView = [[SMGScrollView alloc] initWithTitle:@"STATEN ISLAND" index: 4 frame:self.mainViewFrame imageName:@"2017BusSI" imageSize:CGSizeMake(5120.0, 5376.0)];
 
-  for (SMGScrollView* view in [NSArray arrayWithObjects: self.busBronxView, self.busBrooklynView, self.busQueensView, self.busStatenIslandView, self.busManhattanView, self.bikeMapNightView, self.bikeMapView, self.subwayMapView, nil] ){
+
+  
+  for (SMGScrollView* view in [NSArray arrayWithObjects: self.busBronxView, self.busBrooklynView, self.busQueensView, self.busStatenIslandView, self.busManhattanView, self.bikeMapNightView, self.bikeMapView, self.subwayMapView, nil] ){ // Add subway night view here after map added
         view.smgdelegate = self;
   }
   
@@ -280,14 +352,15 @@
   // App Info Webview
   // -----------------
   self.appInfoView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.mainViewFrame.size.width, self.mainViewFrame.size.height)];
-  self.appInfoView.backgroundColor = VIEW_BACKGROUND_COLOR;
+  self.appInfoView.backgroundColor = VIEWS_BACKGROUND_COLOR;
   [self.appInfoView setOpaque:NO];
   NSURL *url = [[NSBundle mainBundle] URLForResource:@"app_info" withExtension:@"html"];
   [self.appInfoView loadRequest:[NSURLRequest requestWithURL:url]];
   self.appInfoView.delegate = self;
   self.appInfoView.scrollView.bounces = NO;
   
-//  The below is not the best way to register a tap on a webview, instead it seems https://stackoverflow.com/questions/4734682/how-to-detect-touch-on-uiwebview
+//  The below is not the best way to register a tap on a webview, instead it seems
+//  https://stackoverflow.com/questions/4734682/how-to-detect-touch-on-uiwebview
 //  UITapGestureRecognizer *oneFingerTapRecognizer = [[UITapGestureRecognizer alloc]
 //                                                    initWithTarget:self.appInfoView
 //                                                    action:@selector(appInfoViewTapped:)];
@@ -307,8 +380,8 @@
  
 - (void) makeViewControllers {
   
- // UIColor *bgColorForVCs = [UIColor colorWithPatternImage:[SMGUtilities imageWithName:@"bg-dk.png" Size:SCREENFRAME.size]];
-  UIColor *bgColorForVCs = VIEW_BACKGROUND_COLOR;
+
+  UIColor *bgColorForVCs = VIEWS_BACKGROUND_COLOR;
   
   // Bike
   self.bikeMapVC = [[SMGViewController alloc] initWithTabTitle:@"Bike"];
@@ -321,6 +394,7 @@
   self.subwayMapVC = [[SMGViewController alloc] initWithTabTitle:@"Subway"];
   self.subwayMapView.hidden = false;
   [self.subwayMapVC.view addSubview: self.subwayMapView];
+//  [self.subwayMapVC.view addSubview: self.subwayMapNightView]; // Uncomment after adding night view
   self.subwayMapVC.view.backgroundColor = bgColorForVCs;
   
   // Bus

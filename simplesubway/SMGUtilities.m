@@ -2,8 +2,8 @@
 //  SMGUtilities.m
 //
 //
-//  Created by Bolt Action on 2/8/14.
-//  Copyright (c) 2014 Bolt Action. All rights reserved.
+//  Created by Skye on 2/8/14.
+//  Copyright (c) 2014 Skye. All rights reserved.
 //
 
 #import "SMGUtilities.h"

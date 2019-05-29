@@ -1,7 +1,7 @@
 // SMGTabBar.h
 // SMGTabBarController
 //
-// Copyright (c) 2017 Bolt Action
+// Copyright (c) 2019 Skye
 
 
 #import <UIKit/UIKit.h>

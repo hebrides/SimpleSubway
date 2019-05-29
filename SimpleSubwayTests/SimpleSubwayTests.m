@@ -1,8 +1,8 @@
 //
 //  Simple Subway
 //
-//  Created by Bolt Action on 12/17/13.
-//  Copyright (c) 2017 Bolt Action. All rights reserved.
+//  Created by Skye on 12/17/13.
+//  Copyright (c) 2019 Skye. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

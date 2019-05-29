@@ -1,7 +1,7 @@
 // SMGTabBarController.m
 // SMGTabBarController
 //
-// Copyright (c) 2017 Bolt Action
+// Copyright (c) 2019 Skye
 //
 
 #import "SMGTabBarController.h"
@@ -41,7 +41,7 @@
 
 - (void)showStatusBar:(BOOL)show {
   [UIView animateWithDuration:0.3 animations:^{
-    _statusBarHidden = !show;
+    self->_statusBarHidden = !show;
     [self setNeedsStatusBarAppearanceUpdate];
   }];
 }
@@ -168,7 +168,7 @@
   
   __weak SMGTabBarController *weakSelf = self;
   
-  void (^block)() = ^{
+  void (^block)(void) = ^{
     CGSize viewSize = weakSelf.view.bounds.size;
     CGFloat tabBarStartingY = viewSize.height;
     CGFloat contentViewHeight = viewSize.height;
@@ -250,7 +250,7 @@
 
 - (void)tabSubMenu:(SMGTabSubMenu *)subMenu didSelectSubMenuItem:(NSInteger)subMenuItemIndex {
 #ifdef DEBUG
-  NSLog(@"SubMenu Index Selected: %li for Tab Item Index: %li", subMenuItemIndex, _selectedIndex);
+  NSLog(@"SubMenu Index Selected: %li for Tab Item Index: %lu", (long)subMenuItemIndex, (unsigned long)_selectedIndex);
 #endif
   
   if (subMenuItemIndex < 0 || subMenuItemIndex >= [subMenu.subMenuViews count]) {
@@ -286,7 +286,7 @@
 
 - (void)tabBar:(SMGTabBar *)tabBar didLongPressItemAtIndex:(NSInteger)index {
 #ifdef DEBUG
-  NSLog(@"Long press detected at index %li for item %@", index, [self.tabBar.items objectAtIndex:index]);
+  NSLog(@"Long press detected at index %li for item %@", (long)index, [self.tabBar.items objectAtIndex:index]);
 #endif
   
   // If there's a long press, open the submenu but tabBar:shouldSelectItemAtIndex: has already closed it
@@ -326,7 +326,7 @@
 
 - (void)setSubMenuViews:(NSArray*)subMenuViews forTabBarItemAtIndex:(NSInteger)index {
 
-  SMGTabSubMenu * subMenu = [[SMGTabSubMenu alloc] initWithSubMenuViews:subMenuViews title:nil tabNumber:index];
+  SMGTabSubMenu * subMenu = [[SMGTabSubMenu alloc] initWithSubMenuViews:subMenuViews title:nil tabNumber:index tabBarHeight:_tabBar.frame.size.height];
   if (subMenu) {
     [self.view insertSubview:subMenu belowSubview: [self tabBar]];
     [subMenu setDelegate:self];

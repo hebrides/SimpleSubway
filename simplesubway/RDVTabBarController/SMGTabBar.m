@@ -1,7 +1,7 @@
 // SMGTabBar.m
 // SMGTabBarController
 //
-// Copyright (c) 2017 Bolt Action
+// Copyright (c) 2019 Skye
 
 
 #import "SMGTabBar.h"
@@ -175,14 +175,9 @@
 #pragma mark - Translucency
 
 - (void)setTranslucent:(BOOL)translucent {
-    _translucent = translucent;
-    
-    CGFloat alpha = (translucent ? 0.9 : 1.0);
-    
-    [_backgroundView setBackgroundColor:[UIColor colorWithRed:245/255.0
-                                                        green:245/255.0
-                                                         blue:245/255.0
-                                                        alpha:alpha]];
+
+  // Add code for blur...
+  return;
 }
 
 @end

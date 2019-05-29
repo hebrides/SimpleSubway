@@ -45,7 +45,7 @@
  
  */
 
-// Modified by Bolt Action January 2014
+// Modified by Skye January 2014
 
 #import "TilingView.h"
 #import "FastCATiledLayer.h"

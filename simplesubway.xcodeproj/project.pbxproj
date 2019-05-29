@@ -3002,6 +3002,7 @@
 		6131FCF01E4BAE3A003A883E /* 2017Sub_500_4_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6131FC4D1E4BAE3A003A883E /* 2017Sub_500_4_4.png */; };
 		6131FCF11E4BAE3A003A883E /* 2017Sub_500_4_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6131FC4E1E4BAE3A003A883E /* 2017Sub_500_4_5.png */; };
 		61430C201E28295B0060B802 /* SMGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61430C1D1E28295B0060B802 /* SMGViewController.m */; };
+		61493C8F227D032D0078DC4F /* bg-paper-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 61493C8E227D032D0078DC4F /* bg-paper-tile.png */; };
 		61510DD01F5B6D64004ADCD3 /* bg-dk.png in Resources */ = {isa = PBXBuildFile; fileRef = 61510DCD1F5B6D64004ADCD3 /* bg-dk.png */; };
 		61510DD11F5B6D64004ADCD3 /* bg-lt.png in Resources */ = {isa = PBXBuildFile; fileRef = 61510DCE1F5B6D64004ADCD3 /* bg-lt.png */; };
 		61510DD21F5B6D64004ADCD3 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 61510DCF1F5B6D64004ADCD3 /* bg.png */; };
@@ -7373,6 +7374,7 @@
 		6131FFFF1E4BCEE9003A883E /* 2017BusQ_1000_19_20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2017BusQ_1000_19_20.png; sourceTree = "<group>"; };
 		61430C1C1E28295B0060B802 /* SMGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMGViewController.h; sourceTree = "<group>"; };
 		61430C1D1E28295B0060B802 /* SMGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMGViewController.m; sourceTree = "<group>"; };
+		61493C8E227D032D0078DC4F /* bg-paper-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-paper-tile.png"; path = "simplesubway/bg-paper-tile.png"; sourceTree = "<group>"; };
 		61510DCD1F5B6D64004ADCD3 /* bg-dk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-dk.png"; path = "simplesubway/bg-dk.png"; sourceTree = "<group>"; };
 		61510DCE1F5B6D64004ADCD3 /* bg-lt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg-lt.png"; path = "simplesubway/bg-lt.png"; sourceTree = "<group>"; };
 		61510DCF1F5B6D64004ADCD3 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = simplesubway/bg.png; sourceTree = "<group>"; };
@@ -13173,6 +13175,7 @@
 		61E88F731F4DB81D00526283 /* Background Images */ = {
 			isa = PBXGroup;
 			children = (
+				61493C8E227D032D0078DC4F /* bg-paper-tile.png */,
 				61510DCD1F5B6D64004ADCD3 /* bg-dk.png */,
 				61510DCE1F5B6D64004ADCD3 /* bg-lt.png */,
 				61510DCF1F5B6D64004ADCD3 /* bg.png */,
@@ -13371,11 +13374,11 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SMG;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Marcus Lewis";
 				TargetAttributes = {
 					D2D1A20E1861103A007CBBD5 = {
-						DevelopmentTeam = AU9ACKWA7Q;
+						DevelopmentTeam = 4S536XW972;
 						ProvisioningStyle = Automatic;
 					};
 					D2D1A2321861103A007CBBD5 = {
@@ -13385,7 +13388,7 @@
 			};
 			buildConfigurationList = D2D1A20A1861103A007CBBD5 /* Build configuration list for PBXProject "simplesubway" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -13811,6 +13814,7 @@
 				6131027F1E4BCEED003A883E /* 2017BusQ_1000_2_8.png in Resources */,
 				613112621E4BF625003A883E /* 2016Bike1_500_7_9.png in Resources */,
 				6131FCEA1E4BAE3A003A883E /* 2017Sub_500_3_4.png in Resources */,
+				61493C8F227D032D0078DC4F /* bg-paper-tile.png in Resources */,
 				619811011E4ED0DC008DD5D5 /* 2017BusSI_1000_11_18.png in Resources */,
 				613107051E4BEA39003A883E /* 2017BusBk_1000_3_14.png in Resources */,
 				6131024E1E4BCEEC003A883E /* 2017BusQ_1000_19_3.png in Resources */,
@@ -17822,14 +17826,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -17867,14 +17879,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -17904,15 +17924,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Marcus Lewis (4S536XW972)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AU9ACKWA7Q;
+				DEVELOPMENT_TEAM = 4S536XW972;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleSubway/SimpleSubway-Prefix.pch";
 				INFOPLIST_FILE = "SimpleSubway/SimpleSubway-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.simplesubway2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.SimpleSub;
 				PRODUCT_NAME = SimpleSubway;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -17924,15 +17944,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Marcus Lewis (4S536XW972)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AU9ACKWA7Q;
+				DEVELOPMENT_TEAM = 4S536XW972;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleSubway/SimpleSubway-Prefix.pch";
 				INFOPLIST_FILE = "SimpleSubway/SimpleSubway-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.simplesubway2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smgmobile.SimpleSub;
 				PRODUCT_NAME = SimpleSubway;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
