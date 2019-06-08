@@ -149,36 +149,36 @@
   }
 }
 
-NSString* getDeviceModel(void)
-{
-  static dispatch_once_t onceToken;
-  static NSString *strModelID = nil;
-  dispatch_once(&onceToken, ^{
-#if TARGET_IPHONE_SIMULATOR
-    strModelID = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
-#else
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    strModelID = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-#endif
-  });
-  return strModelID;
-}
+//NSString* getDeviceModel(void)
+//{
+//  static dispatch_once_t onceToken;
+//  static NSString *strModelID = nil;
+//  dispatch_once(&onceToken, ^{
+//#if TARGET_IPHONE_SIMULATOR
+//    strModelID = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
+//#else
+//    struct utsname systemInfo;
+//    uname(&systemInfo);
+//    strModelID = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+//#endif
+//  });
+//  return strModelID;
+//}
+//
+//// See the `Hardware strings` in https://en.wikipedia.org/wiki/List_of_iOS_devices
+//BOOL isIPhoneX(void)
+//{
+//  NSString *strModelID = getDeviceModel();
+//  return [strModelID isEqualToString:@"iPhone10,3"] || [strModelID isEqualToString:@"iPhone10,6"];
+//}
 
-// See the `Hardware strings` in https://en.wikipedia.org/wiki/List_of_iOS_devices
-BOOL isIPhoneX(void)
-{
-  NSString *strModelID = getDeviceModel();
-  return [strModelID isEqualToString:@"iPhone10,3"] || [strModelID isEqualToString:@"iPhone10,6"];
-}
-
-BOOL hasTopNotch (void)
-{
-  NSString *strModelID = getDeviceModel();
-  return [strModelID isEqualToString:@"iPhone10,3"] || [strModelID isEqualToString:@"iPhone10,6"] || // iPhone X
-  [strModelID isEqualToString:@"iPhone11,2"] || [strModelID isEqualToString:@"iPhone11,4"] || [strModelID isEqualToString:@"iPhone11,6"] || // iPhone XS (Max)
-  [strModelID isEqualToString:@"iPhone11,8"]; // iPhone XR
-}
+//BOOL hasTopNotch (void)
+//{
+//  NSString *strModelID = getDeviceModel();
+//  return [strModelID isEqualToString:@"iPhone10,3"] || [strModelID isEqualToString:@"iPhone10,6"] || // iPhone X
+//  [strModelID isEqualToString:@"iPhone11,2"] || [strModelID isEqualToString:@"iPhone11,4"] || [strModelID isEqualToString:@"iPhone11,6"] || // iPhone XS (Max)
+//  [strModelID isEqualToString:@"iPhone11,8"]; // iPhone XR
+//}
 
 - (BOOL)hasTopNotch {
   if (@available(iOS 11.0, *)) {
